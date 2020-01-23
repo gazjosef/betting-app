@@ -1,13 +1,13 @@
-// const oddsPercentage = (percentage, margin) => {
-//   return odds;
-// };
+const oddsPercentage = odds => {
+  let percentage = 1 / odds;
 
-// oddsPercentage();
+  return (percentage * 100).toFixed(2);
+};
+
+console.log(oddsPercentage(1.22, 4.0));
 
 const bookmakerMargin = (odds1, odds2) => {
-  let pickOne = 1 / odds1;
-  let pickTwo = 1 / odds2;
-  let margin = pickOne + pickTwo;
+  let margin = 1 / odds1 + 1 / odds2;
 
   return ((margin - 1) * 100).toFixed(2);
 };
