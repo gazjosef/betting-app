@@ -7,3 +7,7 @@ body {
   border-bottom: #008ed6 3px solid;
   opacity: 0.8;
 }
+
+.card {
+  color: #000;
+}
