@@ -20,4 +20,4 @@ const winningPercentage = (percentage, margin) => {
   return odds;
 };
 
-console.log(winningPercentage(50, 5));
+console.log(winningPercentage(50, 2.4));
