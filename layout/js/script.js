@@ -12,7 +12,7 @@ const oddsPercentage = odds => {
   return (percentage * 100).toFixed(2);
 };
 
-console.log(oddsPercentage(1.5));
+console.log(oddsPercentage(1.83));
 
 const winningPercentage = (percentage, margin) => {
   let odds = (1 - margin / 100) / (percentage / 100);
