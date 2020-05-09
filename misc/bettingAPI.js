@@ -9,6 +9,8 @@ function getOdds() {
     .then((data) =>
       data.data.forEach((sport) => {
         console.log(sport.key);
+        let key = sport.key;
+        outputEl.innerHTML += key;
       })
     );
 }
