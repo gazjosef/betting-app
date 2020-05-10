@@ -3,6 +3,8 @@ const sportsBtn = document.getElementById('sports');
 let outputEl = document.getElementById('output');
 const APIkey = '0964ad4e3be969508766aef582e92012';
 
+let region = document.getElementById('selectRegion');
+
 // Get Sports
 function getSports() {
   fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
