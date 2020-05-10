@@ -9,8 +9,7 @@ function getSports() {
     .then((res) => res.json())
     .then((data) =>
       data.data.forEach((sport) => {
-        console.log(sport);
-        outputEl.innerHTML += sport.group + ' ';
+        outputEl.innerHTML += '<li>' + sport.group + '</li>';
       })
     );
 }
