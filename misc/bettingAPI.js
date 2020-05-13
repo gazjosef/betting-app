@@ -42,7 +42,7 @@ function getOdds() {
     .then((data) => {
       console.log(data);
       data.data.forEach((event) => {
-        outputEl.innerHTML += '<div>' + event.teams + '</div>';
+        outputEl.innerHTML += '<div>' + event.sites + '</div>';
       });
     });
 }
