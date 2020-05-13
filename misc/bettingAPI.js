@@ -1,8 +1,9 @@
 // API Key
 const APIkey = '0964ad4e3be969508766aef582e92012';
+const selectSport = document.getElementById('selectSport');
 let market = document.getElementById('selectMarket').value;
 let region = document.getElementById('selectRegion').value;
-const selectSport = document.getElementById('selectSport');
+let sport = document.getElementById('selectSport').value;
 
 // Buttons
 const oddsBtn = document.getElementById('odds');
@@ -35,8 +36,7 @@ function getSports() {
 // Get Odds
 function getOdds() {
   fetch(
-    `https://api.the-odds-api.com/v3/odds/?sport=americanfootball_nfl&region=${region}&mkt=${market}&apiKey=${APIkey}`
-    // `https://api.the-odds-api.com/v3/odds/?sport=upcoming&region=${region}&mkt=${market}&apiKey=${APIkey}`
+    `https://api.the-odds-api.com/v3/odds/?sport=${sport}&region=${region}&mkt=${market}&apiKey=${APIkey}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -46,6 +46,14 @@ function getOdds() {
       });
     });
 }
+
+// Select Sport
+selectSport.onchange = function () {
+  console.log(sport);
+  var selectedString = selectSport.options[selectSport.selectedIndex].value;
+  sport = selectedString;
+  console.log(sport);
+};
 
 // Select Market
 marketEl.onchange = function () {
