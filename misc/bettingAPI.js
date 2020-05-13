@@ -2,6 +2,7 @@
 const APIkey = '0964ad4e3be969508766aef582e92012';
 let market = document.getElementById('selectMarket').value;
 let region = document.getElementById('selectRegion').value;
+const selectSport = document.getElementById('selectSport');
 
 // Buttons
 const oddsBtn = document.getElementById('odds');
@@ -13,15 +14,20 @@ let marketEl = document.getElementById('selectMarket');
 let regionEl = document.getElementById('selectRegion');
 
 // Request
-let oddsRequest = {};
+let listOfSports = [];
 
 // Get Sports
 function getSports() {
   fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
     .then((res) => res.json())
     .then((data) =>
+      // console.log(data)
       data.data.forEach((sport) => {
-        outputEl.innerHTML += '<li>' + sport.group + '</li>';
+        listOfSports.push(sport.key);
+        let el = document.createElement('option');
+        el.textContent = sport.key;
+        el.value = sport.key;
+        selectSport.appendChild(el);
       })
     );
 }
@@ -29,14 +35,16 @@ function getSports() {
 // Get Odds
 function getOdds() {
   fetch(
-    `https://api.the-odds-api.com/v3/odds/?sport=upcoming&region=${region}&mkt=${market}&apiKey=${APIkey}`
+    `https://api.the-odds-api.com/v3/odds/?sport=americanfootball_nfl&region=${region}&mkt=${market}&apiKey=${APIkey}`
+    // `https://api.the-odds-api.com/v3/odds/?sport=upcoming&region=${region}&mkt=${market}&apiKey=${APIkey}`
   )
     .then((res) => res.json())
-    .then((data) =>
+    .then((data) => {
+      console.log(data);
       data.data.forEach((event) => {
         outputEl.innerHTML += '<li>' + event.home_team + '</li>';
-      })
-    );
+      });
+    });
 }
 
 // Select Market
