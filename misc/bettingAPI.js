@@ -42,17 +42,15 @@ function getOdds() {
     .then((data) => {
       console.log(data);
       data.data.forEach((event) => {
-        outputEl.innerHTML += '<li>' + event.home_team + '</li>';
+        outputEl.innerHTML += '<div>' + event.teams + '</div>';
       });
     });
 }
 
 // Select Sport
 selectSport.onchange = function () {
-  console.log(sport);
   var selectedString = selectSport.options[selectSport.selectedIndex].value;
   sport = selectedString;
-  console.log(sport);
 };
 
 // Select Market
