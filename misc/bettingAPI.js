@@ -25,7 +25,6 @@ function getSports() {
   fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       dataObject = data.data;
       displaySportOptions(data);
       console.log(dataObject);
@@ -56,14 +55,11 @@ function getOdds() {
 }
 
 // Display Sites
-
 function displaySites(data) {
   data.data.forEach((event) => {
     event.sites.forEach((site) => {
-      console.log(site.site_nice);
-      outputEl.innerHTML += '<div>' + site.site_nice + '</div>';
+      outputEl.innerHTML += '<div>' + event.teams + site.site_nice + '</div>';
     });
-    outputEl.innerHTML += '<div>' + event.teams + '</div>';
   });
 }
 
