@@ -57,9 +57,18 @@ function getOdds() {
 function displaySites(data) {
   data.data.forEach((event) => {
     event.sites.forEach((site) => {
-      outputEl.innerHTML += '<div>' + event.teams + site.site_nice + '</div>';
+      console.log(site.odds.h2h); // Works
+      console.log(`site.odds.${market}`); // Doesn't work
+      // displayOdds(site);
+      outputEl.innerHTML +=
+        '<div>' + event.teams + site.site_nice + site.odds + '</div>';
     });
   });
+}
+
+// Display Odds
+function displayOdds(site) {
+  site.odds.forEach((site) => {});
 }
 
 // Select Sport
