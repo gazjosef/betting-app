@@ -25,9 +25,7 @@ function getSports() {
   fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
     .then((res) => res.json())
     .then((data) => {
-      dataObject = data.data;
       displaySportOptions(data);
-      console.log(dataObject);
     });
 }
 
@@ -49,7 +47,8 @@ function getOdds() {
   )
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      dataObject = data.data;
+      console.log(dataObject);
       displaySites(data);
     });
 }
