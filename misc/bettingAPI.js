@@ -36,7 +36,7 @@ function displaySportOptions(data) {
   data.data.forEach((sport) => {
     listOfSports.push(sport.key);
     let el = document.createElement('option');
-    el.textContent = sport.key;
+    el.textContent = sport.title;
     el.value = sport.key;
     selectSport.appendChild(el);
   });
