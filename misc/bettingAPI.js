@@ -27,15 +27,20 @@ function getSports() {
     .then((data) => {
       console.log(data);
       dataObject = data.data;
-      data.data.forEach((sport) => {
-        listOfSports.push(sport.key);
-        let el = document.createElement('option');
-        el.textContent = sport.key;
-        el.value = sport.key;
-        selectSport.appendChild(el);
-      });
+      displaySportOptions(data);
       console.log(dataObject);
     });
+}
+
+// Display Sport Options
+function displaySportOptions(data) {
+  data.data.forEach((sport) => {
+    listOfSports.push(sport.key);
+    let el = document.createElement('option');
+    el.textContent = sport.key;
+    el.value = sport.key;
+    selectSport.appendChild(el);
+  });
 }
 
 // Get Odds
@@ -46,13 +51,20 @@ function getOdds() {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      data.data.forEach((event) => {
-        event.sites.forEach((site) => {
-          console.log(site.site_nice);
-        });
-        outputEl.innerHTML += '<div>' + event.teams + '</div>';
-      });
+      displaySites(data);
     });
+}
+
+// Display Sites
+
+function displaySites(data) {
+  data.data.forEach((event) => {
+    event.sites.forEach((site) => {
+      console.log(site.site_nice);
+      outputEl.innerHTML += '<div>' + site.site_nice + '</div>';
+    });
+    outputEl.innerHTML += '<div>' + event.teams + '</div>';
+  });
 }
 
 // Select Sport
@@ -63,10 +75,8 @@ selectSport.onchange = function () {
 
 // Select Market
 marketEl.onchange = function () {
-  console.log(market);
   var selectedString = marketEl.options[marketEl.selectedIndex].value;
   market = selectedString;
-  console.log(market);
 };
 
 // Select Region
