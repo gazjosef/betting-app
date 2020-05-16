@@ -54,6 +54,9 @@ function displaySites(data) {
   data.data.forEach((event) => {
     event.sites.forEach((site) => {
       console.log(site.odds.h2h); // Works
+      site.odds.h2h.forEach((odd) => {
+        console.log(site, odd);
+      });
       console.log(`site.odds.${market}`); // Doesn't work
       // displayOdds(site);
       outputEl.innerHTML +=
