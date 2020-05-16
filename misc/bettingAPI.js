@@ -59,26 +59,40 @@ function displaySites(data) {
       let bookmaker = document.createElement('div');
       bookmaker.innerText = site.site_nice;
       newEvent.appendChild(bookmaker);
+
       // New Home Event
+      // Create Home Team Events
+      let newHomeEvent = document.createElement('div');
+      newHomeEvent.classList.add('oddsDisplay');
+      // // Add Home Team Name
       let homeTeamName = document.createElement('div');
       homeTeamName.innerText = event.teams[0];
-      let newHomeEvent = document.createElement('div');
       newHomeEvent.appendChild(homeTeamName);
+      // // Add Home Team Odds
       let homeOdds = document.createElement('div');
       homeOdds.innerText = site.odds.h2h[0];
       newHomeEvent.appendChild(homeOdds);
+      // // Append To New Event
       newEvent.appendChild(newHomeEvent);
+
       // New Away Event
+      // Create Away Team Events
+      let newAwayEvent = document.createElement('div');
+      newAwayEvent.classList.add('oddsDisplay');
+      // // Add Away Team Name
       let awayTeamName = document.createElement('div');
       awayTeamName.innerText = event.teams[1];
-      let newAwayEvent = document.createElement('div');
       newAwayEvent.appendChild(awayTeamName);
+      // // Add Away Team Odds
       let awayOdds = document.createElement('div');
       awayOdds.innerText = site.odds.h2h[1];
       newAwayEvent.appendChild(awayOdds);
+      // // Append To New Event
       newEvent.appendChild(newAwayEvent);
-      outputEl = newEvent;
+      let br = document.createElement('br');
+      newEvent.appendChild(br);
       console.log(newEvent);
+      outputEl.appendChild(newEvent);
     });
   });
 }
