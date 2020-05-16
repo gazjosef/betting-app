@@ -59,9 +59,11 @@ function displaySites(data) {
       let bookmaker = document.createElement('div');
       bookmaker.innerText = site.site_nice;
       newEvent.appendChild(bookmaker);
+      let br = document.createElement('br');
+      newEvent.appendChild(br);
 
       // New Home Event
-      // Create Home Team Events
+      // // Create Home Team Events
       let newHomeEvent = document.createElement('div');
       newHomeEvent.classList.add('oddsDisplay');
       // // Add Home Team Name
@@ -72,11 +74,12 @@ function displaySites(data) {
       let homeOdds = document.createElement('div');
       homeOdds.innerText = site.odds.h2h[0];
       newHomeEvent.appendChild(homeOdds);
+      newHomeEvent.appendChild(br);
       // // Append To New Event
       newEvent.appendChild(newHomeEvent);
 
       // New Away Event
-      // Create Away Team Events
+      // // Create Away Team Events
       let newAwayEvent = document.createElement('div');
       newAwayEvent.classList.add('oddsDisplay');
       // // Add Away Team Name
@@ -87,10 +90,10 @@ function displaySites(data) {
       let awayOdds = document.createElement('div');
       awayOdds.innerText = site.odds.h2h[1];
       newAwayEvent.appendChild(awayOdds);
+      newAwayEvent.appendChild(br);
       // // Append To New Event
       newEvent.appendChild(newAwayEvent);
-      let br = document.createElement('br');
-      newEvent.appendChild(br);
+
       console.log(newEvent);
       outputEl.appendChild(newEvent);
     });
