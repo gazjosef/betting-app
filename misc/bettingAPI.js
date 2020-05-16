@@ -17,9 +17,6 @@ let outputEl = document.getElementById('output');
 let marketEl = document.getElementById('selectMarket');
 let regionEl = document.getElementById('selectRegion');
 
-// Request
-let listOfSports = [];
-
 // Get Sports
 function getSports() {
   fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
@@ -32,7 +29,6 @@ function getSports() {
 // Display Sport Options
 function displaySportOptions(data) {
   data.data.forEach((sport) => {
-    listOfSports.push(sport.key);
     let el = document.createElement('option');
     el.textContent = sport.title;
     el.value = sport.key;
