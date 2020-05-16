@@ -52,17 +52,40 @@ function getOdds() {
 // Display Sites
 function displaySites(data) {
   data.data.forEach((event) => {
+    // New Event
+    let newEvent = document.createElement('div');
+    newEvent.classList.add('oddsDisplay');
     event.sites.forEach((site) => {
-      console.log(site.odds.h2h); // Works
-      site.odds.h2h.forEach((odd) => {
-        console.log(site, odd);
-      });
-      console.log(`site.odds.${market}`); // Doesn't work
-      // displayOdds(site);
-      outputEl.innerHTML +=
-        '<div>' + event.teams + site.site_nice + site.odds + '</div>';
+      let bookmaker = document.createElement('div');
+      bookmaker.innerText = site.site_nice;
+      newEvent.appendChild(bookmaker);
+      // New Home Event
+      let homeTeamName = document.createElement('div');
+      homeTeamName.innerText = event.teams[0];
+      let newHomeEvent = document.createElement('div');
+      newHomeEvent.appendChild(homeTeamName);
+      let homeOdds = document.createElement('div');
+      homeOdds.innerText = site.odds.h2h[0];
+      newHomeEvent.appendChild(homeOdds);
+      newEvent.appendChild(newHomeEvent);
+      // New Away Event
+      let awayTeamName = document.createElement('div');
+      awayTeamName.innerText = event.teams[1];
+      let newAwayEvent = document.createElement('div');
+      newAwayEvent.appendChild(awayTeamName);
+      let awayOdds = document.createElement('div');
+      awayOdds.innerText = site.odds.h2h[1];
+      newAwayEvent.appendChild(awayOdds);
+      newEvent.appendChild(newAwayEvent);
+      outputEl = newEvent;
+      console.log(newEvent);
     });
   });
+}
+
+// Display Team Names
+function displayTeamNames(site) {
+  site.teams;
 }
 
 // Display Odds
