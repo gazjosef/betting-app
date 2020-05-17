@@ -54,7 +54,7 @@ function displaySites(data) {
   data.data.forEach((event) => {
     // New Event
     let newEvent = document.createElement('div');
-    newEvent.classList.add('oddsDisplay');
+    // newEvent.classList.add('oddsDisplay');
     event.sites.forEach((site) => {
       let bookmaker = document.createElement('div');
       bookmaker.innerText = site.site_nice;
