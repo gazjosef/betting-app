@@ -59,7 +59,7 @@ function displaySites(data) {
       bookmaker.innerText = site.site_nice;
       newEvent.appendChild(bookmaker);
       let br = document.createElement('br');
-      // newEvent.appendChild(br);
+      newEvent.appendChild(br);
 
       // Create Home Team Event
       let newHomeEvent = document.createElement('div');
