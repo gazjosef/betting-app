@@ -54,48 +54,47 @@ function displaySites(data) {
   data.data.forEach((event) => {
     // New Event
     let newEvent = document.createElement('div');
-    // newEvent.classList.add('oddsDisplay');
     event.sites.forEach((site) => {
       let bookmaker = document.createElement('div');
       bookmaker.innerText = site.site_nice;
       newEvent.appendChild(bookmaker);
       let br = document.createElement('br');
-      newEvent.appendChild(br);
+      // newEvent.appendChild(br);
 
-      // New Home Event
-      // // Create Home Team Events
+      // Create Home Team Event
       let newHomeEvent = document.createElement('div');
       newHomeEvent.classList.add('oddsDisplay');
-      // // Add Home Team Name
+      // Add Home Team Name
       let homeTeamName = document.createElement('div');
       homeTeamName.innerText = event.teams[0];
       newHomeEvent.appendChild(homeTeamName);
-      // // Add Home Team Odds
+      // Add Home Team Odds
       let homeOdds = document.createElement('div');
       homeOdds.innerText = site.odds.h2h[0];
       newHomeEvent.appendChild(homeOdds);
       newHomeEvent.appendChild(br);
-      // // Append To New Event
+      // Append To New Event
       newEvent.appendChild(newHomeEvent);
 
-      // New Away Event
-      // // Create Away Team Events
+      // Create Away Team Event
       let newAwayEvent = document.createElement('div');
       newAwayEvent.classList.add('oddsDisplay');
-      // // Add Away Team Name
+      // Add Away Team Name
       let awayTeamName = document.createElement('div');
       awayTeamName.innerText = event.teams[1];
       newAwayEvent.appendChild(awayTeamName);
-      // // Add Away Team Odds
+      // Add Away Team Odds
       let awayOdds = document.createElement('div');
       awayOdds.innerText = site.odds.h2h[1];
       newAwayEvent.appendChild(awayOdds);
       newAwayEvent.appendChild(br);
-      // // Append To New Event
+      // Append To New Event
       newEvent.appendChild(newAwayEvent);
+      // newEvent.appendChild(br);
 
       console.log(newEvent);
       outputEl.appendChild(newEvent);
+      outputEl.appendChild(br);
     });
   });
 }
