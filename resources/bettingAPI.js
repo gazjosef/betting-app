@@ -2,9 +2,10 @@
 const APIkey = '0964ad4e3be969508766aef582e92012';
 
 const selectSport = document.getElementById('selectSport');
-let market = document.getElementById('selectMarket').value;
-let region = document.getElementById('selectRegion').value;
 let sport = document.getElementById('selectSport').value;
+let comp = document.getElementById('selectComp').value;
+let region = document.getElementById('selectRegion').value;
+let market = document.getElementById('selectMarket').value;
 
 let dataObject = [];
 
@@ -22,6 +23,7 @@ function getSports() {
   fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
       displaySportOptions(data);
     });
 }
@@ -30,8 +32,12 @@ function getSports() {
 function displaySportOptions(data) {
   data.data.forEach((sport) => {
     let el = document.createElement('option');
-    el.textContent = sport.title;
+    let sports = []
+    sports.push(sport)
+    el.textContent = sport.group;
     el.value = sport.key;
+    if(sports.indexOf(sport) === -1) {
+    }
     selectSport.appendChild(el);
   });
 }
