@@ -32,12 +32,15 @@ function getSports() {
 function displaySportOptions(data) {
   data.data.forEach((sport) => {
     let el = document.createElement('option');
+    let allSports = []
     let sports = []
-    sports.push(sport)
+    allSports.push(sport)
     el.textContent = sport.group;
     el.value = sport.key;
-    if(sports.indexOf(sport) === -1) {
+    if(allSports.indexOf(sport) === -1) {
+      sports.push(sport)
     }
+    console.log(sports);
     selectSport.appendChild(el);
   });
 }
