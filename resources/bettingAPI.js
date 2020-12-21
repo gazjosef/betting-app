@@ -37,17 +37,23 @@ let sports = []
 // Display Sport Options
 function displaySportOptions(data) {
   data.data.forEach((sport) => {
-    let el = document.createElement('option');
+    // let el = document.createElement('option');
+    // el.textContent = sport.group;
+    // el.value = sport.key;
+    
     allSports.push(sport.group)
-    el.textContent = sport.group;
-    el.value = sport.key;
-    if(allSports.indexOf(sport.group) !== sport.group) {
-      sports.push(sport.group)
-    }
+    allSports.forEach(name => {
+      if(sports.indexOf(name) === -1) {
+        sports.push(name)
+        let el = document.createElement('option');
+        el.textContent = sport.group;
+        el.value = sport.key;
+        selectSport.appendChild(el);
+      }
+    })
     console.log(allSports);
     console.log(sports);
-    // console.log(sports);
-    // selectSport.appendChild(el);
+
   });
 }
 
