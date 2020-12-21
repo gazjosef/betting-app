@@ -41,7 +41,7 @@ function displaySportOptions(data) {
     allSports.push(sport.group)
     el.textContent = sport.group;
     el.value = sport.key;
-    if(allSports.indexOf(sport.group) === -1) {
+    if(allSports.indexOf(sport.group) !== sport.group) {
       sports.push(sport.group)
     }
     console.log(allSports);
