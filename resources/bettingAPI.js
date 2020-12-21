@@ -10,8 +10,8 @@ let market = document.getElementById('selectMarket').value;
 let dataObject = [];
 
 // Buttons
-const oddsBtn = document.getElementById('odds');
-const sportsBtn = document.getElementById('sports');
+const oddsBtn = document.getElementById('oddsBtn');
+const sportsBtn = document.getElementById('sportsBtn');
 
 // Output
 let outputEl = document.getElementById('output');
@@ -56,15 +56,10 @@ function displaySportOptions(data) {
   });
 }
 
-// Display Comp Options
-function displayCompOptions() {
-
-}
-
 // Get Odds
 function getOdds() {
   fetch(
-    `https://api.the-odds-api.com/v3/odds/?sport=${sport}&region=${region}&mkt=${market}&apiKey=${APIkey}`
+    `https://api.the-odds-api.com/v3/odds/?sport=${comp}&region=${region}&mkt=${market}&apiKey=${APIkey}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -124,15 +119,15 @@ function displaySites(data) {
   });
 }
 
-// Display Team Names
-function displayTeamNames(site) {
-  site.teams;
-}
+// // Display Team Names
+// function displayTeamNames(site) {
+//   site.teams;
+// }
 
-// Display Odds
-function displayOdds(site) {
-  site.odds.forEach((site) => {});
-}
+// // Display Odds
+// function displayOdds(site) {
+//   site.odds.forEach((site) => {});
+// }
 
 // Select Sport
 sportEl.onchange = function () {
@@ -141,6 +136,10 @@ sportEl.onchange = function () {
   console.log(sport);
   dataObject.forEach(comp => {
     if(comp.group === sport) {
+      let el = document.createElement('option');
+      el.textContent = comp.key;
+      el.value = comp.key;
+      selectComp.appendChild(el)
       console.log(comp.key);
     }
   })
