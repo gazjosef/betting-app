@@ -23,26 +23,37 @@ function getSports() {
   fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
     .then((res) => res.json())
     .then((data) => {
+      dataObject = data.data;
       console.log(data);
+      console.log(dataObject);
       displaySportOptions(data);
     });
 }
+
+// Sport Names
+let allSports = []
+let sports = []
 
 // Display Sport Options
 function displaySportOptions(data) {
   data.data.forEach((sport) => {
     let el = document.createElement('option');
-    let allSports = []
-    let sports = []
-    allSports.push(sport)
+    allSports.push(sport.group)
     el.textContent = sport.group;
     el.value = sport.key;
-    if(allSports.indexOf(sport) === -1) {
-      sports.push(sport)
+    if(allSports.indexOf(sport.group) === -1) {
+      sports.push(sport.group)
     }
+    console.log(allSports);
     console.log(sports);
-    selectSport.appendChild(el);
+    // console.log(sports);
+    // selectSport.appendChild(el);
   });
+}
+
+// Display Comp Options
+function displayCompOptions() {
+
 }
 
 // Get Odds
@@ -122,6 +133,12 @@ function displayOdds(site) {
 selectSport.onchange = function () {
   var selectedString = selectSport.options[selectSport.selectedIndex].value;
   sport = selectedString;
+};
+
+// Select Comp
+selectSport.onchange = function () {
+  var selectedString = selectSport.options[selectSport.selectedIndex].value;
+  comp = selectedString;
 };
 
 // Select Market
