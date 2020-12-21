@@ -15,6 +15,8 @@ const sportsBtn = document.getElementById('sports');
 
 // Output
 let outputEl = document.getElementById('output');
+let sportEl = document.getElementById('selectSport');
+let compEl = document.getElementById('selectComp');
 let marketEl = document.getElementById('selectMarket');
 let regionEl = document.getElementById('selectRegion');
 
@@ -37,9 +39,6 @@ let sports = []
 // Display Sport Options
 function displaySportOptions(data) {
   data.data.forEach((sport) => {
-    // let el = document.createElement('option');
-    // el.textContent = sport.group;
-    // el.value = sport.key;
     
     allSports.push(sport.group)
     allSports.forEach(name => {
@@ -47,12 +46,12 @@ function displaySportOptions(data) {
         sports.push(name)
         let el = document.createElement('option');
         el.textContent = sport.group;
-        el.value = sport.key;
+        el.value = sport.group;
         selectSport.appendChild(el);
       }
     })
-    console.log(allSports);
-    console.log(sports);
+    // console.log(allSports);
+    // console.log(sports);
 
   });
 }
@@ -136,14 +135,20 @@ function displayOdds(site) {
 }
 
 // Select Sport
-selectSport.onchange = function () {
-  var selectedString = selectSport.options[selectSport.selectedIndex].value;
-  sport = selectedString;
+sportEl.onchange = function () {
+  var selectedString = sportEl.options[sportEl.selectedIndex].value;
+  sport = selectedString
+  console.log(sport);
+  dataObject.forEach(comp => {
+    if(comp.group === sport) {
+      console.log(comp.key);
+    }
+  })
 };
 
 // Select Comp
-selectSport.onchange = function () {
-  var selectedString = selectSport.options[selectSport.selectedIndex].value;
+selectComp.onchange = function () {
+  var selectedString = selectComp.options[selectComp.selectedIndex].value;
   comp = selectedString;
 };
 
@@ -157,6 +162,7 @@ marketEl.onchange = function () {
 regionEl.onchange = function () {
   var selectedString = regionEl.options[regionEl.selectedIndex].value;
   region = selectedString;
+  console.log(region);
 };
 
 // Event Listeners
