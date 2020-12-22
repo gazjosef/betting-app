@@ -8,50 +8,52 @@
   </head>
   <body>
     <div class="container">
-      <!-- SELECT SPORT -->
-      <div class="form-group">
-        <label for="selectSport">Select Sport:</label>
-        <select id="selectSport">
-          <option value="upcoming">Upcoming</option>
-        </select>
+      <div class="selector-group">
+        <!-- SELECT SPORT -->
+        <div class="form-group">
+          <label for="selectSport">Select Sport:</label>
+          <select id="selectSport">
+            <option value="upcoming">Upcoming</option>
+          </select>
+        </div>
+        
+        <!-- SELECT COMP -->
+        <div class="form-group">
+          <label for="selectComp">Select Comp:</label>
+          <select id="selectComp">
+            <option value="upcoming">Upcoming</option>
+          </select>
+        </div>
+  
+        <!-- SELECT REGION -->
+        <div class="form-group">
+          <label for="selectRegion">Select Region:</label>
+          <select class="form-control" id="selectRegion">
+            <option>au</option>
+            <option>eu</option>
+            <option>uk</option>
+            <option>us</option>
+          </select>
+        </div>
+  
+        <!-- SELECT MARKET -->
+        <div class="form-group">
+          <label for="selectMarket">Select Markts:</label>
+          <select class="form-control" id="selectMarket">
+            <option>h2h</option>
+            <option>spreads</option>
+            <option>totals</option>
+          </select>
+        </div>
+  
+        <!-- BUTTONS -->
+        <button id="sportsBtn" onclick="getSports()" class="btn">
+          Sports
+        </button>
+        <button id="oddsBtn" onclick="getOdds()" class="btn">
+          Odds
+        </button>
       </div>
-      
-      <!-- SELECT COMP -->
-      <div class="form-group">
-        <label for="selectComp">Select Comp:</label>
-        <select id="selectComp">
-          <option value="upcoming">Upcoming</option>
-        </select>
-      </div>
-
-      <!-- SELECT REGION -->
-      <div class="form-group">
-        <label for="selectRegion">Select Region:</label>
-        <select class="form-control" id="selectRegion">
-          <option>au</option>
-          <option>eu</option>
-          <option>uk</option>
-          <option>us</option>
-        </select>
-      </div>
-
-      <!-- SELECT MARKET -->
-      <div class="form-group">
-        <label for="selectMarket">Select Markts:</label>
-        <select class="form-control" id="selectMarket">
-          <option>h2h</option>
-          <option>spreads</option>
-          <option>totals</option>
-        </select>
-      </div>
-
-      <!-- BUTTONS -->
-      <button id="sportsBtn" onclick="getSports()" class="btn">
-        Sports
-      </button>
-      <button id="oddsBtn" onclick="getOdds()" class="btn">
-        Odds
-      </button>
 
       <!-- OUTPUT -->
       <div id="output"></div>
