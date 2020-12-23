@@ -78,12 +78,13 @@ function displaySites(data) {
       let bookmaker = document.createElement('div');
       bookmaker.innerText = site.site_nice;
       newEvent.appendChild(bookmaker);
+      newEvent.classList.add('eventDisplay');
       let br = document.createElement('br');
       newEvent.appendChild(br);
 
       // Create Home Team Event
       let newHomeEvent = document.createElement('div');
-      newHomeEvent.classList.add('oddsDisplay');
+      newHomeEvent.classList.add('homeOdds');
       // Add Home Team Name
       let homeTeamName = document.createElement('div');
       homeTeamName.innerText = event.teams[0];
@@ -92,13 +93,12 @@ function displaySites(data) {
       let homeOdds = document.createElement('div');
       homeOdds.innerText = site.odds.h2h[0];
       newHomeEvent.appendChild(homeOdds);
-      newHomeEvent.appendChild(br);
       // Append To New Event
       newEvent.appendChild(newHomeEvent);
 
       // Create Away Team Event
       let newAwayEvent = document.createElement('div');
-      newAwayEvent.classList.add('oddsDisplay');
+      newAwayEvent.classList.add('awayOdds');
       // Add Away Team Name
       let awayTeamName = document.createElement('div');
       awayTeamName.innerText = event.teams[1];
@@ -107,7 +107,6 @@ function displaySites(data) {
       let awayOdds = document.createElement('div');
       awayOdds.innerText = site.odds.h2h[1];
       newAwayEvent.appendChild(awayOdds);
-      newAwayEvent.appendChild(br);
       // Append To New Event
       newEvent.appendChild(newAwayEvent);
       // newEvent.appendChild(br);
@@ -137,10 +136,10 @@ sportEl.onchange = function () {
   dataObject.forEach(comp => {
     if(comp.group === sport) {
       let el = document.createElement('option');
-      el.textContent = comp.key;
+      el.textContent = comp.title;
       el.value = comp.key;
       selectComp.appendChild(el)
-      console.log(comp.key);
+      console.log(comp.title);
     }
   })
 };
