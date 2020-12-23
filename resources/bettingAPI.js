@@ -25,6 +25,9 @@ function getSports() {
   fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
     .then((res) => res.json())
     .then((data) => {
+      dataObject = data.data;
+      console.log(data);
+      console.log(dataObject);
       displaySportOptions(data);
     });
 }
@@ -74,7 +77,6 @@ function displaySites(data) {
       newEvent.appendChild(bookmaker);
       newEvent.classList.add('eventDisplay');
       let br = document.createElement('br');
-      newEvent.appendChild(br);
 
       // Create Home Team Event
       let newHomeEvent = document.createElement('div');
@@ -103,7 +105,6 @@ function displaySites(data) {
       newAwayEvent.appendChild(awayOdds);
       // Append To New Event
       newEvent.appendChild(newAwayEvent);
-      // newEvent.appendChild(br);
 
       console.log(newEvent);
       outputEl.appendChild(newEvent);
