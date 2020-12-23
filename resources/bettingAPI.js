@@ -50,9 +50,6 @@ function displaySportOptions(data) {
         selectSport.appendChild(el);
       }
     })
-    // console.log(allSports);
-    // console.log(sports);
-
   });
 }
 
@@ -160,7 +157,6 @@ marketEl.onchange = function () {
 regionEl.onchange = function () {
   var selectedString = regionEl.options[regionEl.selectedIndex].value;
   region = selectedString;
-  console.log(region);
 };
 
 // Event Listeners
