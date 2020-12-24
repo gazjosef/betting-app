@@ -76,6 +76,7 @@ function displaySites(data) {
     let home = document.createElement('div')
     let homeName = document.createElement('div');
     let homeSideOdds = document.createElement('div')
+    homeSideOdds.classList.add('odds')
     homeName.innerText = event.teams[0];
     home.appendChild(homeName);
     home.appendChild(homeSideOdds);
@@ -85,6 +86,7 @@ function displaySites(data) {
     let awayName = document.createElement('div');
     let awaySideOdds = document.createElement('div')
     awayName.innerText = event.teams[1];
+    awaySideOdds.classList.add('odds')
     away.appendChild(awayName)
     away.appendChild(awaySideOdds);
     
