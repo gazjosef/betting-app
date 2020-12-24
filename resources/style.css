@@ -5,3 +5,7 @@
 .oddsDisplay {
   /* display: flex; */
 }
+
+.odds {
+  display: flex;
+}
