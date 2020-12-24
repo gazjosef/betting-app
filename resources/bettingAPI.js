@@ -15,6 +15,7 @@ const sportsBtn = document.getElementById('sportsBtn');
 
 // Output
 let outputEl = document.getElementById('output');
+let tableEl = document.getElementById('table');
 let sportEl = document.getElementById('selectSport');
 let compEl = document.getElementById('selectComp');
 let marketEl = document.getElementById('selectMarket');
@@ -74,18 +75,25 @@ function displaySites(data) {
     // Home Team
     let home = document.createElement('div')
     let homeName = document.createElement('h1');
+    let homeSideOdds = document.createElement('div')
     homeName.innerText = event.teams[0];
     home.appendChild(homeName);
+    home.appendChild(homeSideOdds);
     
     // Away Team
     let away = document.createElement('div')
     let awayName = document.createElement('h1');
+    let awaySideOdds = document.createElement('div')
     awayName.innerText = event.teams[1];
     away.appendChild(awayName)
+    away.appendChild(awaySideOdds);
     
     
     event.sites.forEach(site => {
-      let sideOdds = document.createElement('div')
+      let bookmaker = document.createElement('div')
+      bookmaker.innerText = site.site_nice
+      homeSideOdds.appendChild(bookmaker)
+      awaySideOdds.appendChild(bookmaker)
     })
       
     newEvent.appendChild(home)
