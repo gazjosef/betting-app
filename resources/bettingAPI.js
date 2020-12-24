@@ -70,19 +70,31 @@ function displaySites(data) {
     // New Event
     let newEvent = document.createElement('div');
 
+
     // Home Team
-    let homeName = document.createElement('div');
+    let home = document.createElement('div')
+    let homeName = document.createElement('h1');
     homeName.innerText = event.teams[0];
-    newEvent.appendChild(homeName)
+    home.appendChild(homeName);
     
     // Away Team
-    let awayName = document.createElement('div');
+    let away = document.createElement('div')
+    let awayName = document.createElement('h1');
     awayName.innerText = event.teams[1];
-    newEvent.appendChild(awayName)
+    away.appendChild(awayName)
+    
+    
+    event.sites.forEach(site => {
+      let sideOdds = document.createElement('div')
+    })
+      
+    newEvent.appendChild(home)
+    newEvent.appendChild(away)
 
     let br = document.createElement('br');
     outputEl.appendChild(newEvent);
     outputEl.appendChild(br);
+    console.log(newEvent);
     
     // event.sites.forEach((site) => {
     //   let bookmaker = document.createElement('div');
