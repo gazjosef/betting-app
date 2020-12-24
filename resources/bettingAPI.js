@@ -74,6 +74,7 @@ function displaySites(data) {
 
     // Home Team
     let home = document.createElement('div')
+    home.classList.add("flex")
     let homeName = document.createElement('div');
     let homeSideOdds = document.createElement('div')
     homeSideOdds.classList.add('odds')
@@ -83,6 +84,7 @@ function displaySites(data) {
     
     // Away Team
     let away = document.createElement('div')
+    away.classList.add("flex")
     let awayName = document.createElement('div');
     let awaySideOdds = document.createElement('div')
     awayName.innerText = event.teams[1];
