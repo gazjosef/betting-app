@@ -90,10 +90,18 @@ function displaySites(data) {
     
     
     event.sites.forEach(site => {
-      let bookmaker = document.createElement('div')
-      bookmaker.innerText = site.site_nice
-      homeSideOdds.appendChild(bookmaker)
-      awaySideOdds.appendChild(bookmaker)
+      let homeBookmaker = document.createElement('div')
+      homeBookmaker.innerText = site.site_nice
+      let homeOdds = document.createElement('div')
+      homeOdds.innerText = site.odds.h2h[0]
+      let awayBookmaker = document.createElement('div')
+      awayBookmaker.innerText = site.site_nice
+      let awayOdds = document.createElement('div')
+      awayOdds.innerText = site.odds.h2h[1]
+      homeSideOdds.appendChild(homeBookmaker)
+      homeSideOdds.appendChild(homeOdds)
+      awaySideOdds.appendChild(awayBookmaker)
+      awaySideOdds.appendChild(awayOdds)
     })
       
     newEvent.appendChild(home)
@@ -103,58 +111,8 @@ function displaySites(data) {
     outputEl.appendChild(newEvent);
     outputEl.appendChild(br);
     console.log(newEvent);
-    
-    // event.sites.forEach((site) => {
-    //   let bookmaker = document.createElement('div');
-    //   bookmaker.innerText = site.site_nice;
-    //   newEvent.appendChild(bookmaker);
-    //   newEvent.classList.add('eventDisplay');
-    //   let br = document.createElement('br');
-
-    //   // Create Home Team Event
-    //   let newHomeEvent = document.createElement('div');
-    //   newHomeEvent.classList.add('homeOdds');
-    //   // Add Home Team Name
-    //   let homeTeamName = document.createElement('div');
-    //   homeTeamName.innerText = event.teams[0];
-    //   newHomeEvent.appendChild(homeTeamName);
-    //   // Add Home Team Odds
-    //   let homeOdds = document.createElement('div');
-    //   homeOdds.innerText = site.odds.h2h[0];
-    //   newHomeEvent.appendChild(homeOdds);
-    //   // Append To New Event
-    //   newEvent.appendChild(newHomeEvent);
-
-    //   // Create Away Team Event
-    //   let newAwayEvent = document.createElement('div');
-    //   newAwayEvent.classList.add('awayOdds');
-    //   // Add Away Team Name
-    //   let awayTeamName = document.createElement('div');
-    //   awayTeamName.innerText = event.teams[1];
-    //   newAwayEvent.appendChild(awayTeamName);
-    //   // Add Away Team Odds
-    //   let awayOdds = document.createElement('div');
-    //   awayOdds.innerText = site.odds.h2h[1];
-    //   newAwayEvent.appendChild(awayOdds);
-    //   // Append To New Event
-    //   newEvent.appendChild(newAwayEvent);
-
-    //   console.log(newEvent);
-    //   outputEl.appendChild(newEvent);
-    //   outputEl.appendChild(br);
-    // });
   });
 }
-
-// // Display Team Names
-// function displayTeamNames(site) {
-//   site.teams;
-// }
-
-// // Display Odds
-// function displayOdds(site) {
-//   site.odds.forEach((site) => {});
-// }
 
 // Select Sport
 sportEl.onchange = function () {
