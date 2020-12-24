@@ -74,7 +74,7 @@ function displaySites(data) {
 
     // Home Team
     let home = document.createElement('div')
-    let homeName = document.createElement('h1');
+    let homeName = document.createElement('div');
     let homeSideOdds = document.createElement('div')
     homeName.innerText = event.teams[0];
     home.appendChild(homeName);
@@ -82,7 +82,7 @@ function displaySites(data) {
     
     // Away Team
     let away = document.createElement('div')
-    let awayName = document.createElement('h1');
+    let awayName = document.createElement('div');
     let awaySideOdds = document.createElement('div')
     awayName.innerText = event.teams[1];
     away.appendChild(awayName)
@@ -125,7 +125,6 @@ sportEl.onchange = function () {
       el.textContent = comp.title;
       el.value = comp.key;
       selectComp.appendChild(el)
-      console.log(comp.title);
     }
   })
 };
