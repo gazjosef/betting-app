@@ -92,12 +92,25 @@ function displaySites(data) {
     away.appendChild(awayName)
     away.appendChild(awaySideOdds);
     
-    
+    let homeArrayOdds = []
+
+
     event.sites.forEach(site => {
       let homeBookmaker = document.createElement('div')
       homeBookmaker.innerText = site.site_nice
       let homeOdds = document.createElement('div')
       homeOdds.innerText = site.odds.h2h[0]
+
+      homeArrayOdds.push(site.odds.h2h[0])
+
+      let highestHomeOdds = homeArrayOdds.reduce((p, v) => {
+        return ( p < v ? p : v )
+      });
+
+      if(site.odds.h2h[0] === highestHomeOdds) {
+        console.log(site.odds.h2h[0]);
+      }
+
       let awayBookmaker = document.createElement('div')
       awayBookmaker.innerText = site.site_nice
       let awayOdds = document.createElement('div')
@@ -115,6 +128,9 @@ function displaySites(data) {
     outputEl.appendChild(newEvent);
     outputEl.appendChild(br);
     console.log(newEvent);
+    // console.log(homeArrayOdds.reduce((p, v) => {
+    //   return ( p < v ? p : v );
+    // }));
   });
 }
 
@@ -122,7 +138,6 @@ function displaySites(data) {
 sportEl.onchange = function () {
   var selectedString = sportEl.options[sportEl.selectedIndex].value;
   sport = selectedString
-  console.log(sport);
   dataObject.forEach(comp => {
     if(comp.group === sport) {
       let el = document.createElement('option');
