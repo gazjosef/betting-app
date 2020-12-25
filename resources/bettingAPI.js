@@ -104,11 +104,11 @@ function displaySites(data) {
       homeArrayOdds.push(site.odds.h2h[0])
 
       let highestHomeOdds = homeArrayOdds.reduce((p, v) => {
-        return ( p < v ? p : v )
+        return ( p > v ? p : v )
       });
 
       if(site.odds.h2h[0] === highestHomeOdds) {
-        console.log(site.odds.h2h[0]);
+        console.log(site.site_nice, site.odds.h2h[0]);
       }
 
       let awayBookmaker = document.createElement('div')
