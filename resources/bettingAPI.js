@@ -107,19 +107,19 @@ function displaySites(data) {
       homeArrayObject[site.site_nice] = site.odds.h2h[0]
       awayArrayObject[site.site_nice] = site.odds.h2h[1]
 
-      let highestHomeOdds = homeArrayOdds.reduce((p, v) => {
-        return ( p > v ? p : v )
-      });
+      // let highestHomeOdds = homeArrayOdds.reduce((p, v) => {
+      //   return ( p > v ? p : v )
+      // });
 
-      if(site.odds.h2h[0] === highestHomeOdds) {
-        let homeBookmaker = document.createElement('div')
-        homeBookmaker.innerText = site.site_nice
-        let homeOdds = document.createElement('div')
-        homeOdds.innerText = site.odds.h2h[0]
-        homeSideOdds.appendChild(homeBookmaker)
-        homeSideOdds.appendChild(homeOdds)
-        console.log(site.site_nice, site.odds.h2h[0]);
-      }
+      // if(site.odds.h2h[0] === highestHomeOdds) {
+      //   let homeBookmaker = document.createElement('div')
+      //   homeBookmaker.innerText = site.site_nice
+      //   let homeOdds = document.createElement('div')
+      //   homeOdds.innerText = site.odds.h2h[0]
+      //   homeSideOdds.appendChild(homeBookmaker)
+      //   homeSideOdds.appendChild(homeOdds)
+      //   console.log(site.site_nice, site.odds.h2h[0]);
+      // }
 
       let awayBookmaker = document.createElement('div')
       awayBookmaker.innerText = site.site_nice
@@ -130,9 +130,13 @@ function displaySites(data) {
       awaySideOdds.appendChild(awayBookmaker)
       awaySideOdds.appendChild(awayOdds)
     })
+
+
       
     console.log(homeArrayObject);
     console.log(awayArrayObject);
+
+    console.log(Object.keys(homeArrayObject).reduce((a, b) => homeArrayObject[a] > homeArrayObject[b] ? a : b));
 
     newEvent.appendChild(home)
     newEvent.appendChild(away)
