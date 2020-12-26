@@ -94,7 +94,7 @@ function displaySites(data) {
     
     let homeArrayOdds = []
     let homeArrayObject = {}
-    let awayArrayOdds = []
+    let awayArrayObject = {}
 
 
     event.sites.forEach(site => {
@@ -105,7 +105,7 @@ function displaySites(data) {
 
       homeArrayOdds.push(site.odds.h2h[0])
       homeArrayObject[site.site_nice] = site.odds.h2h[0]
-      console.log(homeArrayObject);
+      awayArrayObject[site.site_nice] = site.odds.h2h[1]
 
       let highestHomeOdds = homeArrayOdds.reduce((p, v) => {
         return ( p > v ? p : v )
@@ -131,6 +131,9 @@ function displaySites(data) {
       awaySideOdds.appendChild(awayOdds)
     })
       
+    console.log(homeArrayObject);
+    console.log(awayArrayObject);
+
     newEvent.appendChild(home)
     newEvent.appendChild(away)
 
@@ -138,9 +141,6 @@ function displaySites(data) {
     outputEl.appendChild(newEvent);
     outputEl.appendChild(br);
     console.log(newEvent);
-    // console.log(homeArrayOdds.reduce((p, v) => {
-    //   return ( p < v ? p : v );
-    // }));
   });
 }
 
