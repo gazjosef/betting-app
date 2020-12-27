@@ -1,6 +1,7 @@
 // API Key
 const APIkey = '0964ad4e3be969508766aef582e92012';
 
+// Values
 const selectSport = document.getElementById('selectSport');
 let sport = document.getElementById('selectSport').value;
 let comp = document.getElementById('selectComp').value;
