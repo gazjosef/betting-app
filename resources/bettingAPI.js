@@ -108,19 +108,19 @@ function displaySites(data) {
     // Away Team
     let away = document.createElement('div')
     away.classList.add("flex")
-    let awayName = document.createElement('div');
-    let awaySideOdds = document.createElement('div')
-    awayName.innerText = event.teams[1];
-    awaySideOdds.classList.add('odds')
 
+    let awayName = document.createElement('div');
+    awayName.innerText = event.teams[1];
+    away.appendChild(awayName)
+
+    let awaySideOdds = document.createElement('div')
+    awaySideOdds.classList.add('odds')
     let awayBookmaker = document.createElement('div')
     awayBookmaker.innerText = highestAwayArrayObject
     let awayOdds = document.createElement('div')
     awayOdds.innerText = awayArrayObject[highestAwayArrayObject]
     awaySideOdds.appendChild(awayBookmaker)
     awaySideOdds.appendChild(awayOdds)
-
-    away.appendChild(awayName)
     away.appendChild(awaySideOdds);
     
     newEvent.appendChild(home)
