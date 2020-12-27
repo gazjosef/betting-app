@@ -1,14 +1,14 @@
 // API Key
 const APIkey = '0964ad4e3be969508766aef582e92012';
 
+let dataObject = [];
+
 // Values
 const selectSport = document.getElementById('selectSport');
 let sport = document.getElementById('selectSport').value;
 let comp = document.getElementById('selectComp').value;
 let region = document.getElementById('selectRegion').value;
 let market = document.getElementById('selectMarket').value;
-
-let dataObject = [];
 
 // Buttons
 const oddsBtn = document.getElementById('oddsBtn');
