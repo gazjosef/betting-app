@@ -68,18 +68,42 @@ function getOdds() {
 // Display Sites
 function displaySites(data) {
   data.data.forEach((event) => {
+
+    let homeArrayObject = {}
+    let awayArrayObject = {}
+
+    event.sites.forEach(site => {
+      homeArrayObject[site.site_nice] = site.odds.h2h[0]
+      awayArrayObject[site.site_nice] = site.odds.h2h[1]
+    })
+
+    let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
+    let highestAwayArrayObject = Object.keys(awayArrayObject).reduce((acc, curr) => awayArrayObject[acc] > awayArrayObject[curr] ? acc : curr)
+    
+    console.log(homeArrayObject);
+    console.log(awayArrayObject);
+
     // New Event
     let newEvent = document.createElement('div');
 
     // Home Team
     let home = document.createElement('div')
     home.classList.add("flex")
+
     let homeName = document.createElement('div');
-    let homeSideOdds = document.createElement('div')
-    homeSideOdds.classList.add('odds')
     homeName.innerText = event.teams[0];
     home.appendChild(homeName);
+
+    let homeSideOdds = document.createElement('div')
+    homeSideOdds.classList.add('odds')
+    let homeBookmaker = document.createElement('div')
+    homeBookmaker.innerText = highestHomeArrayObject
+    let homeOdds = document.createElement('div')
+    homeOdds.innerText = homeArrayObject[highestHomeArrayObject]
+    homeSideOdds.appendChild(homeBookmaker)
+    homeSideOdds.appendChild(homeOdds)
     home.appendChild(homeSideOdds);
+
     
     // Away Team
     let away = document.createElement('div')
@@ -88,38 +112,17 @@ function displaySites(data) {
     let awaySideOdds = document.createElement('div')
     awayName.innerText = event.teams[1];
     awaySideOdds.classList.add('odds')
+
+    let awayBookmaker = document.createElement('div')
+    awayBookmaker.innerText = highestAwayArrayObject
+    let awayOdds = document.createElement('div')
+    awayOdds.innerText = awayArrayObject[highestAwayArrayObject]
+    awaySideOdds.appendChild(awayBookmaker)
+    awaySideOdds.appendChild(awayOdds)
+
     away.appendChild(awayName)
     away.appendChild(awaySideOdds);
     
-    let homeArrayObject = {}
-    let awayArrayObject = {}
-
-    event.sites.forEach(site => {
-      homeArrayObject[site.site_nice] = site.odds.h2h[0]
-      awayArrayObject[site.site_nice] = site.odds.h2h[1]
-      // let awayBookmaker = document.createElement('div')
-      // awayBookmaker.innerText = site.site_nice
-      // let awayOdds = document.createElement('div')
-      // awayOdds.innerText = site.odds.h2h[1]
-      // awaySideOdds.appendChild(awayBookmaker)
-      // awaySideOdds.appendChild(awayOdds)
-    })
-
-    let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
-    
-    event.sites.forEach(site => {
-      if(site.site_nice === highestHomeArrayObject) {
-        console.log("Big dog");
-      }
-    })
-    console.log(homeArrayObject);
-    console.log(awayArrayObject);
-
-    // if(highestHomeArrayObject === ) {
-
-    // }
-    console.log(highestHomeArrayObject);
-
     newEvent.appendChild(home)
     newEvent.appendChild(away)
 
