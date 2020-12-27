@@ -71,7 +71,6 @@ function displaySites(data) {
     // New Event
     let newEvent = document.createElement('div');
 
-
     // Home Team
     let home = document.createElement('div')
     home.classList.add("flex")
@@ -96,31 +95,29 @@ function displaySites(data) {
     let awayArrayObject = {}
 
     event.sites.forEach(site => {
-      // let homeBookmaker = document.createElement('div')
-      // homeBookmaker.innerText = site.site_nice
-      // let homeOdds = document.createElement('div')
-      // homeOdds.innerText = site.odds.h2h[0]
-
       homeArrayObject[site.site_nice] = site.odds.h2h[0]
       awayArrayObject[site.site_nice] = site.odds.h2h[1]
-
-
       // let awayBookmaker = document.createElement('div')
       // awayBookmaker.innerText = site.site_nice
       // let awayOdds = document.createElement('div')
       // awayOdds.innerText = site.odds.h2h[1]
-      // homeSideOdds.appendChild(homeBookmaker)
-      // homeSideOdds.appendChild(homeOdds)
       // awaySideOdds.appendChild(awayBookmaker)
       // awaySideOdds.appendChild(awayOdds)
     })
 
-    let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((a, b) => homeArrayObject[a] > homeArrayObject[b] ? a : b)
-      
+    let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
+    
+    event.sites.forEach(site => {
+      if(site.site_nice === highestHomeArrayObject) {
+        console.log("Big dog");
+      }
+    })
     console.log(homeArrayObject);
     console.log(awayArrayObject);
 
-    // console.log(Object.keys(homeArrayObject).reduce((a, b) => homeArrayObject[a] > homeArrayObject[b] ? a : b));
+    // if(highestHomeArrayObject === ) {
+
+    // }
     console.log(highestHomeArrayObject);
 
     newEvent.appendChild(home)
@@ -164,7 +161,3 @@ regionEl.onchange = function () {
   var selectedString = regionEl.options[regionEl.selectedIndex].value;
   region = selectedString;
 };
-
-// Event Listeners
-// sportsBtn.addEventListener('click', getSports());
-// oddsBtn.addEventListener('click', getOdds());
