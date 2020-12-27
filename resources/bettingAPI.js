@@ -92,8 +92,8 @@ function displaySites(data) {
     away.appendChild(awayName)
     away.appendChild(awaySideOdds);
     
-    let homeArrayOdds = []
     let homeArrayObject = {}
+
     let awayArrayObject = {}
 
 
@@ -103,23 +103,9 @@ function displaySites(data) {
       // let homeOdds = document.createElement('div')
       // homeOdds.innerText = site.odds.h2h[0]
 
-      homeArrayOdds.push(site.odds.h2h[0])
       homeArrayObject[site.site_nice] = site.odds.h2h[0]
       awayArrayObject[site.site_nice] = site.odds.h2h[1]
 
-      // let highestHomeOdds = homeArrayOdds.reduce((p, v) => {
-      //   return ( p > v ? p : v )
-      // });
-
-      // if(site.odds.h2h[0] === highestHomeOdds) {
-      //   let homeBookmaker = document.createElement('div')
-      //   homeBookmaker.innerText = site.site_nice
-      //   let homeOdds = document.createElement('div')
-      //   homeOdds.innerText = site.odds.h2h[0]
-      //   homeSideOdds.appendChild(homeBookmaker)
-      //   homeSideOdds.appendChild(homeOdds)
-      //   console.log(site.site_nice, site.odds.h2h[0]);
-      // }
 
       let awayBookmaker = document.createElement('div')
       awayBookmaker.innerText = site.site_nice
@@ -131,12 +117,13 @@ function displaySites(data) {
       awaySideOdds.appendChild(awayOdds)
     })
 
-
+    let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((a, b) => homeArrayObject[a] > homeArrayObject[b] ? a : b)
       
     console.log(homeArrayObject);
     console.log(awayArrayObject);
 
-    console.log(Object.keys(homeArrayObject).reduce((a, b) => homeArrayObject[a] > homeArrayObject[b] ? a : b));
+    // console.log(Object.keys(homeArrayObject).reduce((a, b) => homeArrayObject[a] > homeArrayObject[b] ? a : b));
+    console.log(highestHomeArrayObject);
 
     newEvent.appendChild(home)
     newEvent.appendChild(away)
