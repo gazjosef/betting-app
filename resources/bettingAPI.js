@@ -107,14 +107,14 @@ function displaySites(data) {
       awayArrayObject[site.site_nice] = site.odds.h2h[1]
 
 
-      let awayBookmaker = document.createElement('div')
-      awayBookmaker.innerText = site.site_nice
-      let awayOdds = document.createElement('div')
-      awayOdds.innerText = site.odds.h2h[1]
+      // let awayBookmaker = document.createElement('div')
+      // awayBookmaker.innerText = site.site_nice
+      // let awayOdds = document.createElement('div')
+      // awayOdds.innerText = site.odds.h2h[1]
       // homeSideOdds.appendChild(homeBookmaker)
       // homeSideOdds.appendChild(homeOdds)
-      awaySideOdds.appendChild(awayBookmaker)
-      awaySideOdds.appendChild(awayOdds)
+      // awaySideOdds.appendChild(awayBookmaker)
+      // awaySideOdds.appendChild(awayOdds)
     })
 
     let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((a, b) => homeArrayObject[a] > homeArrayObject[b] ? a : b)
