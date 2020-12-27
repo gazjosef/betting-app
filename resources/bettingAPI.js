@@ -93,9 +93,7 @@ function displaySites(data) {
     away.appendChild(awaySideOdds);
     
     let homeArrayObject = {}
-
     let awayArrayObject = {}
-
 
     event.sites.forEach(site => {
       // let homeBookmaker = document.createElement('div')
