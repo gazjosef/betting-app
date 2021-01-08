@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css'
 
 import { SearchBar } from '../SearchBar/SearchBar'
 import { Output } from '../Output/Output'
