@@ -7,7 +7,7 @@ let dataObject = [];
 const selectSport = document.getElementById('selectSport');
 let sport = document.getElementById('selectSport').value;
 let comp = document.getElementById('selectComp').value;
-let region = document.getElementById('selectRegion').value;
+let region = "au"
 let market = document.getElementById('selectMarket').value;
 
 // Buttons
@@ -20,7 +20,7 @@ let tableEl = document.getElementById('table');
 let sportEl = document.getElementById('selectSport');
 let compEl = document.getElementById('selectComp');
 let marketEl = document.getElementById('selectMarket');
-let regionEl = document.getElementById('selectRegion');
+// let regionEl = document.getElementById('selectRegion');
 
 // Get Sports
 function getSports() {
@@ -161,7 +161,7 @@ marketEl.onchange = function () {
 };
 
 // Select Region
-regionEl.onchange = function () {
-  var selectedString = regionEl.options[regionEl.selectedIndex].value;
-  region = selectedString;
-};
+// regionEl.onchange = function () {
+//   var selectedString = regionEl.options[regionEl.selectedIndex].value;
+//   region = selectedString;
+// };

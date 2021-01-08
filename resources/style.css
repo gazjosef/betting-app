@@ -14,3 +14,7 @@
 .flex {
   /* display: flex; */
 }
+
+.form-group {
+  display: inline-block;
+}
