@@ -3,24 +3,24 @@ const APIkey = '0964ad4e3be969508766aef582e92012';
 
 let dataObject = [];
 
+// Output
+const outputEl = document.getElementById('output');
+const tableEl = document.getElementById('table');
+const sportEl = document.getElementById('selectSport');
+const compEl = document.getElementById('selectComp');
+const marketEl = document.getElementById('selectMarket');
+// let regionEl = document.getElementById('selectRegion');
+
 // Values
 const selectSport = document.getElementById('selectSport');
-let sport = document.getElementById('selectSport').value;
-let comp = document.getElementById('selectComp').value;
+let sport = sportEl.value;
+let comp = compEl.value;
 let region = "au"
-let market = document.getElementById('selectMarket').value;
+let market = marketEl.value;
 
 // Buttons
 const oddsBtn = document.getElementById('oddsBtn');
 const sportsBtn = document.getElementById('sportsBtn');
-
-// Output
-let outputEl = document.getElementById('output');
-let tableEl = document.getElementById('table');
-let sportEl = document.getElementById('selectSport');
-let compEl = document.getElementById('selectComp');
-let marketEl = document.getElementById('selectMarket');
-// let regionEl = document.getElementById('selectRegion');
 
 // Get Sports
 function getSports() {

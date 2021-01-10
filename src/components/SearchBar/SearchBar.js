@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const SearchBar = () => {
     return (
@@ -22,7 +22,7 @@ export const SearchBar = () => {
                 </div>
   
                 {/* <!-- SELECT REGION --> */}
-                <div className="form-group">
+                {/* <div className="form-group">
                 <label htmlFor="selectRegion">Select Region:</label>
                 <select className="form-control" id="selectRegion">
                     <option>au</option>
@@ -30,7 +30,7 @@ export const SearchBar = () => {
                     <option>uk</option>
                     <option>us</option>
                 </select>
-                </div>
+                </div> */}
         
                 {/* <!-- SELECT MARKET --> */}
                 <div className="form-group">
