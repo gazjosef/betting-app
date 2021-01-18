@@ -1,0 +1,13 @@
+.search-bar {
+    background-color: orangered;
+    width: 800px;
+    
+    &__selector-group {
+        display: flex;
+        justify-content: space-around;
+
+        .form-group {
+            display: inline-block;
+        }
+    }
+}

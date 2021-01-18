@@ -12,7 +12,6 @@ const marketEl = document.getElementById('selectMarket');
 // let regionEl = document.getElementById('selectRegion');
 
 // Values
-const selectSport = document.getElementById('selectSport');
 let sport = sportEl.value;
 let comp = compEl.value;
 let region = "au"
@@ -28,6 +27,7 @@ function getSports() {
     .then((res) => res.json())
     .then((data) => {
       dataObject = data.data;
+      console.log(dataObject);
       displaySportOptions(data);
     });
 }
@@ -47,7 +47,7 @@ function displaySportOptions(data) {
         let el = document.createElement('option');
         el.textContent = sport.group;
         el.value = sport.group;
-        selectSport.appendChild(el);
+        sportEl.appendChild(el);
       }
     })
   });
@@ -74,6 +74,7 @@ function displaySites(data) {
     let awayArrayObject = {}
 
     event.sites.forEach(site => {
+      // homeArrayObject[site.site_nice] = site.odds.h2h[0]
       homeArrayObject[site.site_nice] = site.odds.h2h[0]
       awayArrayObject[site.site_nice] = site.odds.h2h[1]
     })

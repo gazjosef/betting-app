@@ -1,0 +1,20 @@
+.output {
+    background-color: orangered;
+    width: 800px;
+
+    &__table {
+        width: 100%;
+
+        th {
+            background-color: darkred;
+            color: white;
+        }
+
+        th, td {
+            text-align: left;
+            padding: .5rem;
+            border-bottom: 1px solid #ddd;
+
+        }
+    }
+}

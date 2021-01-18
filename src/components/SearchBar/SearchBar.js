@@ -1,24 +1,28 @@
 import React from 'react';
 
 export const SearchBar = () => {
+
+    const getOdds = () => {
+        console.log("test");
+    }
+
     return (
-        <div>
-            <h1>Search Bar</h1>
-            <div className="selector-group">
+        <div className="search-bar u-margin-bottom-medium">
+            <div className="search-bar__selector-group">
                 {/* <!-- SELECT SPORT --> */}
                 <div className="form-group">
-                <label htmlFor="selectSport">Select Sport:</label>
-                <select id="selectSport">
-                    <option value="upcoming">Upcoming</option>
-                </select>
+                    <label htmlFor="selectSport">Select Sport:</label>
+                    <select id="selectSport">
+                        <option value="upcoming">Upcoming</option>
+                    </select>
                 </div>
         
                 {/* <!-- SELECT COMP --> */}
                 <div className="form-group">
-                <label htmlFor="selectComp">Select Comp:</label>
-                <select id="selectComp">
-                    <option value="upcoming">Upcoming</option>
-                </select>
+                    <label htmlFor="selectComp">Select Comp:</label>
+                    <select id="selectComp">
+                        <option value="upcoming">Upcoming</option>
+                    </select>
                 </div>
   
                 {/* <!-- SELECT REGION --> */}
@@ -34,19 +38,19 @@ export const SearchBar = () => {
         
                 {/* <!-- SELECT MARKET --> */}
                 <div className="form-group">
-                <label htmlFor="selectMarket">Select Markts:</label>
-                <select className="form-control" id="selectMarket">
-                    <option>h2h</option>
-                    <option>spreads</option>
-                    <option>totals</option>
-                </select>
+                    <label htmlFor="selectMarket">Select Markts:</label>
+                    <select className="form-control" id="selectMarket">
+                        <option>h2h</option>
+                        <option>spreads</option>
+                        <option>totals</option>
+                    </select>
                 </div>
         
                 {/* <!-- BUTTONS --> */}
-                <button id="sportsBtn" onClick="getSports()" className="btn">
+                {/* <button id="sportsBtn" onClick="getSports()" className="btn">
                 Sports
-                </button>
-                <button id="oddsBtn" onClick="getOdds()" className="btn">
+                </button> */}
+                <button id="oddsBtn" onClick={getOdds()} className="btn">
                 Odds
                 </button>
             </div>
