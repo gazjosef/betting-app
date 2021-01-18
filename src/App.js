@@ -31,7 +31,7 @@ function App() {
     <div className="app">
       <header className="app__header">
         <div className="u-margin-bottom-medium">
-          <h1>$$$ Odds Checker</h1>
+          <h1><i class="fas fa-search-dollar"></i> Best Odds</h1>
         </div>
         <SearchBar />
         <Output />
