@@ -9,5 +9,37 @@
         .form-group {
             display: inline-block;
         }
+
+
     }
+
+    &__custom-select {
+        position: relative;
+        font-family: Arial;
+
+        .select-selected {
+            background-color: DodgerBlue;
+        }
+    }
+
+
+
+    .select-selected:after {
+        position: absolute;
+        content: "";
+        top: 14px;
+        right: 10px;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-color: #fff transparent transparent transparent;
+    }
+
+    .select-items div,.select-selected {
+        color: #ffffff;
+        padding: 8px 16px;
+        border: 1px solid transparent;
+        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+        cursor: pointer;
+      }
 }

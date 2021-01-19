@@ -10,6 +10,7 @@ function App() {
   const APIkey = '0964ad4e3be969508766aef582e92012';
 
   let total = 0
+  
   useEffect(() => {
     console.log("call");
     fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
@@ -20,7 +21,7 @@ function App() {
       console.log(total);
       console.log(dataObject);
     });
-  }, [dataObject]);
+  }, [total]);
 
   // Output
   // let outputEl = document.getElementById('output');
@@ -28,16 +29,15 @@ function App() {
   // let sportEl = document.getElementById('selectSport');
   // let compEl = document.getElementById('selectComp');
   // let marketEl = document.getElementById('selectMarket');
-// let regionEl = document.getElementById('selectRegion');
+  // let regionEl = document.getElementById('selectRegion');
+
   return (
     <div className="app">
-      <header className="app__header">
         <div className="u-margin-bottom-medium">
           <h1> Best  <i className="fas fa-search-dollar"></i>dds</h1>
         </div>
         <SearchBar />
         <Output />
-      </header>
     </div>
   );
 }

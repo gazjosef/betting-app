@@ -12,7 +12,7 @@ export const SearchBar = () => {
                 {/* <!-- SELECT SPORT --> */}
                 <div className="form-group">
                     <label htmlFor="selectSport">Select Sport:</label>
-                    <select id="selectSport">
+                    <select id="selectSport" className="search-bar__custom-select">
                         <option value="upcoming">Upcoming</option>
                     </select>
                 </div>
@@ -20,26 +20,15 @@ export const SearchBar = () => {
                 {/* <!-- SELECT COMP --> */}
                 <div className="form-group">
                     <label htmlFor="selectComp">Select Comp:</label>
-                    <select id="selectComp">
+                    <select id="selectComp" className="search-bar__custom-select">
                         <option value="upcoming">Upcoming</option>
                     </select>
                 </div>
-  
-                {/* <!-- SELECT REGION --> */}
-                {/* <div className="form-group">
-                <label htmlFor="selectRegion">Select Region:</label>
-                <select className="form-control" id="selectRegion">
-                    <option>au</option>
-                    <option>eu</option>
-                    <option>uk</option>
-                    <option>us</option>
-                </select>
-                </div> */}
-        
+                       
                 {/* <!-- SELECT MARKET --> */}
                 <div className="form-group">
                     <label htmlFor="selectMarket">Select Markts:</label>
-                    <select className="form-control" id="selectMarket">
+                    <select id="selectMarket" className="form-control search-bar__custom-select">
                         <option>h2h</option>
                         <option>spreads</option>
                         <option>totals</option>
