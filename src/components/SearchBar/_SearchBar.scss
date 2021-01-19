@@ -1,16 +1,19 @@
 .search-bar {
     background-color: orangered;
     width: 800px;
+
+    // display: flex;
+
     
     &__selector-group {
+        padding: 1.5rem;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        align-items: center;
 
         .form-group {
             display: inline-block;
         }
-
-
     }
 
     &__custom-select {
