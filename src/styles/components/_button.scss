@@ -4,7 +4,7 @@
   &:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1.5rem 4rem;
+    padding: 1rem 3rem;
     display: inline-block;
     border-radius: 5rem;
     transition: all 0.2s;
@@ -74,7 +74,7 @@
 
   &:link,
   &:visited {
-    font-size: $default-font-size;
+    font-size: 1.2rem;
     color: $color-primary;
     display: inline-block;
     text-decoration: none;

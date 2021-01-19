@@ -21,7 +21,7 @@ function App() {
       console.log(total);
       console.log(dataObject);
     });
-  }, [total]);
+  }, []);
 
   // Output
   // let outputEl = document.getElementById('output');
@@ -33,9 +33,6 @@ function App() {
 
   return (
     <div className="app">
-        <div className="u-margin-bottom-medium">
-          <h1> Best  <i className="fas fa-search-dollar"></i>dds</h1>
-        </div>
         <SearchBar />
         <Output />
     </div>
