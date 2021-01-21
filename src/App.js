@@ -23,18 +23,11 @@ function App() {
         .then((data) => {
           dataObject = data.data
           console.log(dataObject);
-
-          dataObject.forEach(element => {
-            console.log(timeConverter(element.commence_time));
-          });
         });
     }
     getOdds()
   }, [])
 
-  // const displaySites = dataObject.map((site) => {
-    
-  // })
 
   const timeConverter = (UNIX_timestamp) => {
     let a = new Date(UNIX_timestamp * 1000);
@@ -69,12 +62,15 @@ function App() {
         <table>
           <thead>
             <tr>
-              <th scope="col">Start Time</th>
-              <th scope="col">Teams</th>
-              <th scope="col">Bookmaker</th>
-              <th scope="col">Odds</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">Team</th>
+            <th scope="col">Bookmaker</th>
+            <th scope="col">Odds</th>
             </tr>
           </thead>
+          <tbody>
+
+          </tbody>
         </table>
 
         <Output />
