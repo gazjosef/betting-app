@@ -74,7 +74,6 @@ function displaySites(data) {
     let awayArrayObject = {}
 
     event.sites.forEach(site => {
-      // homeArrayObject[site.site_nice] = site.odds.h2h[0]
       homeArrayObject[site.site_nice] = site.odds.h2h[0]
       awayArrayObject[site.site_nice] = site.odds.h2h[1]
     })

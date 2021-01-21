@@ -1,15 +1,18 @@
 .output {
-    background-color: orangered;
+    background-color: #fff;
     width: 800px;
     margin: auto;
+    color: #000;
+
 
 
     &__table {
         width: 100%;
+        border-radius: 3rem;
 
         th {
-            background-color: darkred;
-            color: white;
+            background-color: lightblue;
+            // color: white;
         }
 
         th, td {

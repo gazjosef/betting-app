@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+    border-radius: 3rem;
+
+    th {
+        background-color: lightblue;
+        // color: white;
+    }
+
+    th, td {
+        text-align: left;
+        padding: .5rem;
+        border-bottom: 1px solid #ddd;
+    }
+}
