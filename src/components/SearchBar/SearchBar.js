@@ -3,7 +3,7 @@ import React from 'react';
 export const SearchBar = () => {
 
     const getOdds = () => {
-        console.log("test");
+        // console.log("test");
     }
 
     return (

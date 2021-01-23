@@ -1,31 +1,49 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, 
+  // useState 
+} from 'react';
 import './App.scss';
 
 import { SearchBar } from './components/SearchBar/SearchBar'
-import { Output } from './components/Output/Output'
+// import { Output } from './components/Output/Output'
 
 function App() {
+  // const [ oddsObject, setOddsObject ] = useState([])
 
   const APIkey = '0964ad4e3be969508766aef582e92012';
 
-  let markets = [ "h2h", "spreads", "totals" ]
-  let dataObject = {}
+  // let markets = [ "h2h", "spreads", "totals" ]
+  // let dataObject = {}
 
   useEffect( () => {
-    markets.forEach((market) => {
-      console.log(market);
-    })
-    function getOdds() {
-      fetch(
+
+
+    const getOdds = async () => {
+
+      const api_call = await fetch(
         `https://api.the-odds-api.com/v3/odds/?sport=upcoming&region=au&mkt=h2h&apiKey=${APIkey}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          dataObject = data.data
-          console.log(dataObject);
-        });
+      );
+        
+      const data = await api_call.json();
+
+      let oddsArray = data.data
+
+      console.log(oddsArray);
+
+
     }
     getOdds()
+    // function getOdds() {
+    //   fetch(
+    //     `https://api.the-odds-api.com/v3/odds/?sport=upcoming&region=au&mkt=h2h&apiKey=${APIkey}`
+    //   )
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       dataObject = data.data
+    //       dataObject = JSON.parse(dataObject)
+    //       console.log(dataObject);
+    //     });
+    // }
+    // getOdds()
   }, [])
 
 
@@ -55,6 +73,24 @@ function App() {
     return time;
 }
 
+// const displayEvents = dataObject.map((event) => {
+//   return (
+//     <Fragment>
+//       <tr>
+//         <td rowSpan="2">{event.commence_time}</td>
+//         <td>Roosters</td>
+//         <td>SportsBet</td>
+//         <td>$1.95</td>
+//       </tr>
+//       <tr>
+//         <td>Storm</td>
+//         <td>BetFair</td>
+//         <td>$2.05</td>
+//       </tr>
+//     </Fragment>
+//   )
+// })
+
   return (
     <div className="app">
         <SearchBar />
@@ -69,11 +105,11 @@ function App() {
             </tr>
           </thead>
           <tbody>
-
+            {/* {displayEvents} */}
           </tbody>
         </table>
 
-        <Output />
+        {/* <Output /> */}
     </div>
   );
 }
