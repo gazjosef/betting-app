@@ -1,49 +1,28 @@
-import React, { useEffect, 
-  // useState 
-} from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 
 import { SearchBar } from './components/SearchBar/SearchBar'
 // import { Output } from './components/Output/Output'
 
 function App() {
-  // const [ oddsObject, setOddsObject ] = useState([])
+  const [ oddsObject, setOddsObject ] = useState([])
 
   const APIkey = '0964ad4e3be969508766aef582e92012';
 
   // let markets = [ "h2h", "spreads", "totals" ]
-  // let dataObject = {}
 
   useEffect( () => {
-
-
-    const getOdds = async () => {
-
-      const api_call = await fetch(
+    async function getOdds() {
+      const response = await fetch(
         `https://api.the-odds-api.com/v3/odds/?sport=upcoming&region=au&mkt=h2h&apiKey=${APIkey}`
       );
-        
-      const data = await api_call.json();
-
-      let oddsArray = data.data
-
-      console.log(oddsArray);
-
-
+      response.json()
+        .then((data) => {
+          setOddsObject(data.data)
+        })
+        .catch(err => console.log(err));
     }
     getOdds()
-    // function getOdds() {
-    //   fetch(
-    //     `https://api.the-odds-api.com/v3/odds/?sport=upcoming&region=au&mkt=h2h&apiKey=${APIkey}`
-    //   )
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       dataObject = data.data
-    //       dataObject = JSON.parse(dataObject)
-    //       console.log(dataObject);
-    //     });
-    // }
-    // getOdds()
   }, [])
 
 
@@ -73,24 +52,48 @@ function App() {
     return time;
 }
 
-// const displayEvents = dataObject.map((event) => {
+// const displayEvents = oddsObject.map((event) => {
 //   return (
-//     <Fragment>
+//     <>
 //       <tr>
-//         <td rowSpan="2">{event.commence_time}</td>
-//         <td>Roosters</td>
+//         <td rowSpan="2">{timeConverter(event.commence_time)}</td>
+//         <td>{event.teams[0]}</td>
 //         <td>SportsBet</td>
 //         <td>$1.95</td>
 //       </tr>
 //       <tr>
-//         <td>Storm</td>
+//         <td>{event.teams[1]}</td>
 //         <td>BetFair</td>
 //         <td>$2.05</td>
 //       </tr>
-//     </Fragment>
+//     </>
 //   )
 // })
 
+const displayEvents = (events) => {
+  events.forEach((event) => {
+
+    let homeArrayObject = {}
+    let awayArrayObject = {}
+
+    event.sites.forEach(site => {
+      homeArrayObject[site.site_nice] = site.odds.h2h[0]
+      awayArrayObject[site.site_nice] = site.odds.h2h[1]
+    })
+
+    let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
+    let highestAwayArrayObject = Object.keys(awayArrayObject).reduce((acc, curr) => awayArrayObject[acc] > awayArrayObject[curr] ? acc : curr)
+    
+    console.log(homeArrayObject);
+    console.log(highestHomeArrayObject);
+    console.log(awayArrayObject);
+    console.log(highestAwayArrayObject);
+  })
+}
+
+const display = displayEvents(oddsObject)
+
+console.log(oddsObject);
   return (
     <div className="app">
         <SearchBar />
@@ -105,7 +108,7 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {/* {displayEvents} */}
+            {display}
           </tbody>
         </table>
 
