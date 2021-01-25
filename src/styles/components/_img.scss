@@ -1,8 +1,9 @@
 .img {
-    -webkit-transform: rotate(90deg) scale(.7);
-    -moz-transform: rotate(90deg) scale(.7);
-    -o-transform: rotate(90deg) scale(.7);
-    -ms-transform: rotate(90deg) scale(.7);
-    transform: rotate(90deg) scale(.7);
-    padding: 0;
+    -webkit-transform: rotate(90deg) translateY(-30%);
+    -moz-transform: rotate(90deg) translateY(-30%);
+    -o-transform: rotate(90deg) translateY(-30%);
+    -ms-transform: rotate(90deg) translateY(-30%);
+    transform: rotate(90deg) translateY(-30%);
+    display: block;
+
 }
