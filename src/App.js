@@ -145,14 +145,16 @@ const displayEvents = oddsObject.map((event) => {
             <td rowSpan="2">{event.sport_nice}</td>
             <td>{event.teams[0]}</td>
             <td>
-              <img className="img" src={require(`../src/img/bookmakers_side/${highestHomeBookmaker(event.sites)}.svg`).default} alt={highestHomeBookmaker(event.sites)}/>
+              {/* <img className="img" src={require(`../src/img/bookmakers_side/${highestHomeBookmaker(event.sites)}.svg`).default} alt={highestHomeBookmaker(event.sites)}/> */}
+              {highestDrawBookmaker(event.sites)}
             </td>
             <td>${highestHomeOdds(event.sites)}</td>
           </tr>
           <tr>
             <td>{event.teams[1]}</td>
             <td>
-              <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/>
+              {/* <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/> */}
+              {highestDrawBookmaker(event.sites)}
             </td>
             <td>${highestAwayOdds(event.sites)}</td>
           </tr>
@@ -166,21 +168,24 @@ const displayEvents = oddsObject.map((event) => {
           <td rowSpan="3">{event.sport_nice}</td>
           <td>{event.teams[0]}</td>
           <td>
-            <img className="img" src={require(`../src/img/bookmakers_side/${highestHomeBookmaker(event.sites)}.svg`).default} alt={highestHomeBookmaker(event.sites)}/>
+            {/* <img className="img" src={require(`../src/img/bookmakers_side/${highestHomeBookmaker(event.sites)}.svg`).default} alt={highestHomeBookmaker(event.sites)}/> */}
+            {highestDrawBookmaker(event.sites)}
           </td>
           <td>${highestHomeOdds(event.sites)}</td>
         </tr>
         <tr>
           <td>{event.teams[1]}</td>
           <td>
-            <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/>
+            {/* <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/> */}
+            {highestDrawBookmaker(event.sites)}
           </td>
           <td>${highestAwayOdds(event.sites)}</td>
         </tr>
         <tr>
           <td>Draw</td>
           <td>
-            <img className="img" src={require(`../src/img/bookmakers_side/${highestDrawBookmaker(event.sites)}.svg`).default} alt={highestDrawBookmaker(event.sites)}/>
+            {/* <img className="img" src={require(`../src/img/bookmakers_side/${highestDrawBookmaker(event.sites)}.svg`).default} alt={highestDrawBookmaker(event.sites)}/> */}
+            {highestDrawBookmaker(event.sites)}
           </td>
           <td>${highestDrawOdds(event.sites)}</td>
         </tr>
