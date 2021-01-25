@@ -46,52 +46,29 @@ function App() {
     let month = months[a.getMonth()];
     let day = a.getDate();
     let hour = a.getHours();
-    let min = a.getMinutes();
+    let min = ("0" + a.getMinutes()).slice(-2);
     // let sec = a.getSeconds();
     let time = day + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
     return time;
 }
 
-// const displayEvents = oddsObject.map((event) => {
-//   return (
-//     <>
-//       <tr>
-//         <td rowSpan="2">{timeConverter(event.commence_time)}</td>
-//         <td>{event.teams[0]}</td>
-//         <td>SportsBet</td>
-//         <td>$1.95</td>
-//       </tr>
-//       <tr>
-//         <td>{event.teams[1]}</td>
-//         <td>BetFair</td>
-//         <td>$2.05</td>
-//       </tr>
-//     </>
-//   )
-// })
-
-const displayEvents = (events) => {
-  events.forEach((event) => {
-
-    let homeArrayObject = {}
-    let awayArrayObject = {}
-
-    event.sites.forEach(site => {
-      homeArrayObject[site.site_nice] = site.odds.h2h[0]
-      awayArrayObject[site.site_nice] = site.odds.h2h[1]
-    })
-
-    let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
-    let highestAwayArrayObject = Object.keys(awayArrayObject).reduce((acc, curr) => awayArrayObject[acc] > awayArrayObject[curr] ? acc : curr)
-    
-    console.log(homeArrayObject);
-    console.log(highestHomeArrayObject);
-    console.log(awayArrayObject);
-    console.log(highestAwayArrayObject);
-  })
-}
-
-const display = displayEvents(oddsObject)
+const displayEvents = oddsObject.map((event) => {
+  return (
+    <>
+      <tr>
+        <td rowSpan="2">{timeConverter(event.commence_time)}</td>
+        <td>{event.teams[0]}</td>
+        <td>SportsBet</td>
+        <td>$1.95</td>
+      </tr>
+      <tr>
+        <td>{event.teams[1]}</td>
+        <td>BetFair</td>
+        <td>$2.05</td>
+      </tr>
+    </>
+  )
+})
 
 console.log(oddsObject);
   return (
@@ -108,7 +85,7 @@ console.log(oddsObject);
             </tr>
           </thead>
           <tbody>
-            {display}
+            {displayEvents}
           </tbody>
         </table>
 
