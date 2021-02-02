@@ -15,7 +15,7 @@ export const SearchBar = () => {
                 </div>
                 {/* <!-- SELECT SPORT --> */}
                 <div className="form-group">
-                    <label htmlFor="selectSport">Select Sport:</label>
+                    <label htmlFor="selectSport">Select Sport: </label>
                     <select id="selectSport" className="search-bar__custom-select">
                         <option value="upcoming">Upcoming</option>
                     </select>
@@ -23,7 +23,7 @@ export const SearchBar = () => {
         
                 {/* <!-- SELECT COMP --> */}
                 <div className="form-group">
-                    <label htmlFor="selectComp">Select Comp:</label>
+                    <label htmlFor="selectComp">Select Comp: </label>
                     <select id="selectComp" className="search-bar__custom-select">
                         <option value="upcoming">Upcoming</option>
                     </select>
@@ -31,7 +31,7 @@ export const SearchBar = () => {
                        
                 {/* <!-- SELECT MARKET --> */}
                 <div className="form-group">
-                    <label htmlFor="selectMarket">Select Markts:</label>
+                    <label htmlFor="selectMarket">Select Markts: </label>
                     <select id="selectMarket" className="form-control search-bar__custom-select">
                         <option>h2h</option>
                         <option>spreads</option>

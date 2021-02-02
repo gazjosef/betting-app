@@ -1,9 +1,9 @@
 .search-bar {
-    background-color: #0D324D;
     width: 800px;
-    margin: 2rem auto;
+    margin: 0 auto;
     
     &__selector-group {
+        // margin: .5rem;
         padding: 1rem;
         display: flex;
         justify-content: space-between;

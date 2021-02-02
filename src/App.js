@@ -32,16 +32,18 @@ function App() {
     fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
     .then((res) => res.json())
     .then((data) => {
-      displaySportOptions(data)
+      displaySportOptions(data);
     });  
   }
 
   const displaySportOptions = (data) => {
     data.data.forEach((sport) => {
       setAllCompNames((oldArray) => [...oldArray, sport.group])
+      console.log(compNames);
       allCompNames.forEach((name) => {
         if(compNames.indexOf(name) === -1) {
-          setCompNames((oldArray) => [...oldArray, name])
+          // setCompNames((oldArray) => [...oldArray, name])
+          console.log("it did work");
         } else {
           console.log("did not work");
         }
@@ -78,7 +80,7 @@ function App() {
 const highestHomeBookmaker = (events) => {
   let homeArrayObject = {}
   events.forEach(site => {
-    homeArrayObject[site.site_nice] = site.odds.h2h[0]
+    homeArrayObject[site.site_key] = site.odds.h2h[0]
   })
   let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
   console.log(highestHomeArrayObject);
@@ -89,7 +91,7 @@ const highestHomeBookmaker = (events) => {
 const highestHomeOdds = (events) => {
   let homeArrayObject = {}
   events.forEach(site => {
-    homeArrayObject[site.site_nice] = site.odds.h2h[0]
+    homeArrayObject[site.site_key] = site.odds.h2h[0]
   })
   let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
 
@@ -99,7 +101,7 @@ const highestHomeOdds = (events) => {
 const highestAwayBookmaker = (events) => {
   let awayArrayObject = {}
   events.forEach(site => {
-    awayArrayObject[site.site_nice] = site.odds.h2h[1]
+    awayArrayObject[site.site_key] = site.odds.h2h[1]
   })
   let highestAwayArrayObject = Object.keys(awayArrayObject).reduce((acc, curr) => awayArrayObject[acc] > awayArrayObject[curr] ? acc : curr)
 
@@ -109,7 +111,7 @@ const highestAwayBookmaker = (events) => {
 const highestAwayOdds = (events) => {
   let awayArrayObject = {}
   events.forEach(site => {
-    awayArrayObject[site.site_nice] = site.odds.h2h[1]
+    awayArrayObject[site.site_key] = site.odds.h2h[1]
   })
   let highestAwayArrayObject = Object.keys(awayArrayObject).reduce((acc, curr) => awayArrayObject[acc] > awayArrayObject[curr] ? acc : curr)
 
@@ -119,7 +121,7 @@ const highestAwayOdds = (events) => {
 const highestDrawBookmaker = (events) => {
   let drawArrayObject = {}
   events.forEach(site => {
-    drawArrayObject[site.site_nice] = site.odds.h2h[2]
+    drawArrayObject[site.site_key] = site.odds.h2h[2]
   })
   let highestDrawArrayObject = Object.keys(drawArrayObject).reduce((acc, curr) => drawArrayObject[acc] > drawArrayObject[curr] ? acc : curr)
 
@@ -128,96 +130,110 @@ const highestDrawBookmaker = (events) => {
 const highestDrawOdds = (events) => {
   let drawArrayObject = {}
   events.forEach(site => {
-    drawArrayObject[site.site_nice] = site.odds.h2h[2]
+    drawArrayObject[site.site_key] = site.odds.h2h[2]
   })
   let highestDrawArrayObject = Object.keys(drawArrayObject).reduce((acc, curr) => drawArrayObject[acc] > drawArrayObject[curr] ? acc : curr)
 
   return drawArrayObject[highestDrawArrayObject]
 }
 
+// const displayEvents = oddsObject.map((event) => {
 
-const displayEvents = oddsObject.map((event) => {
-  if(event.sites[0].odds.h2h.length < 3 ) {
-      return (
+//     // if(event.sites[0].odds.h2h.length === 0) {
+//     //   console.log("zero");
+//     // }
+// }
+
+
+  const displayEvents = oddsObject.map((event) => {
+    if(event.sites[0].odds.h2h.length > 2) {
+        return (
         <>
           <tr>
-            <td rowSpan="2">{timeConverter(event.commence_time)}</td>
-            <td rowSpan="2">{event.sport_nice}</td>
+            <td rowSpan="3">{timeConverter(event.commence_time)}</td>
+            <td rowSpan="3">{event.sport_nice}</td>
             <td>{event.teams[0]}</td>
             <td>
-              {/* <img className="img" src={require(`../src/img/bookmakers_side/${highestHomeBookmaker(event.sites)}.svg`).default} alt={highestHomeBookmaker(event.sites)}/> */}
-              {highestDrawBookmaker(event.sites)}
+              <img className="img" src={require(`../src/img/bookmakers_side/${highestHomeBookmaker(event.sites)}.svg`).default} alt={highestHomeBookmaker(event.sites)}/>
+              {/* {highestHomeBookmaker(event.sites)} */}
             </td>
             <td>${highestHomeOdds(event.sites)}</td>
           </tr>
           <tr>
+            {/* <td style={{ display: "none"}}></td> */}
+            {/* <td style={{ display: "none"}}></td> */}
             <td>{event.teams[1]}</td>
             <td>
-              {/* <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/> */}
-              {highestDrawBookmaker(event.sites)}
+              <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/>
+              {/* {highestAwayBookmaker(event.sites)} */}
             </td>
             <td>${highestAwayOdds(event.sites)}</td>
           </tr>
+          <tr>
+            {/* <td style={{ display: "none"}}></td> */}
+            {/* <td style={{ display: "none"}}></td> */}
+            <td>Draw</td>
+            <td>
+              <img className="img" src={require(`../src/img/bookmakers_side/${highestDrawBookmaker(event.sites)}.svg`).default} alt={highestDrawBookmaker(event.sites)}/>
+              {/* {highestDrawBookmaker(event.sites)} */}
+            </td>
+            <td>${highestDrawOdds(event.sites)}</td>
+          </tr>
         </>
-      )
-  } else {
-    return (
-      <>
-        <tr>
-          <td rowSpan="3">{timeConverter(event.commence_time)}</td>
-          <td rowSpan="3">{event.sport_nice}</td>
-          <td>{event.teams[0]}</td>
-          <td>
-            {/* <img className="img" src={require(`../src/img/bookmakers_side/${highestHomeBookmaker(event.sites)}.svg`).default} alt={highestHomeBookmaker(event.sites)}/> */}
-            {highestDrawBookmaker(event.sites)}
-          </td>
-          <td>${highestHomeOdds(event.sites)}</td>
-        </tr>
-        <tr>
-          <td>{event.teams[1]}</td>
-          <td>
-            {/* <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/> */}
-            {highestDrawBookmaker(event.sites)}
-          </td>
-          <td>${highestAwayOdds(event.sites)}</td>
-        </tr>
-        <tr>
-          <td>Draw</td>
-          <td>
-            {/* <img className="img" src={require(`../src/img/bookmakers_side/${highestDrawBookmaker(event.sites)}.svg`).default} alt={highestDrawBookmaker(event.sites)}/> */}
-            {highestDrawBookmaker(event.sites)}
-          </td>
-          <td>${highestDrawOdds(event.sites)}</td>
-        </tr>
-      </>
-    )   
-  }
-})
+
+        )
+    } else {
+      return (
+            <>
+            <tr>
+              <td rowSpan="2">{timeConverter(event.commence_time)}</td>
+              <td rowSpan="2">{event.sport_nice}</td>
+              <td>{event.teams[0]}</td>
+              <td>
+                <img className="img" src={require(`../src/img/bookmakers_side/${highestHomeBookmaker(event.sites)}.svg`).default} alt={highestHomeBookmaker(event.sites)}/>
+                {/* {highestHomeBookmaker(event.sites)} */}
+              </td>
+              <td>${highestHomeOdds(event.sites)}</td>
+            </tr>
+            <tr>
+              {/* <td style={{ display: "none"}}></td> */}
+              {/* <td style={{ display: "none"}}></td> */}
+              <td>{event.teams[1]}</td>
+              <td>
+                <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/>
+                {/* {highestAwayBookmaker(event.sites)} */}
+              </td>
+              <td>${highestAwayOdds(event.sites)}</td>
+            </tr>
+          </>
+      )   
+    }
+  })
 
 console.log(allCompNames);
-console.log(compNames);
-// console.log(oddsObject);
+// console.log(compNames);
+console.log(oddsObject);
   return (
     <div className="app">
+      <header className="header">
         <SearchBar />
+      </header>
+      <table>
+        <thead>
+          <tr>
+          <th scope="col">Start Time</th>
+          <th scope="col">Competitions</th>
+          <th scope="col">Teams</th>
+          <th scope="col">Bookmakers</th>
+          <th scope="col">Odds</th>
+          </tr>
+        </thead>
+        <tbody>
+          {displayEvents}
+        </tbody>
+      </table>
 
-        <table>
-          <thead>
-            <tr>
-            <th scope="col">Start Time</th>
-            <th scope="col">Competitions</th>
-            <th scope="col">Teams</th>
-            <th scope="col">Bookmakers</th>
-            <th scope="col">Odds</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* {highestOdds} */}
-            {displayEvents}
-          </tbody>
-        </table>
-
-        {/* <Output /> */}
+      {/* <Output /> */}
     </div>
   );
 }
