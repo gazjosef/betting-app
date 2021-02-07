@@ -1,10 +1,16 @@
 import React from 'react';
 
-export const SearchBar = () => {
+export const SearchBar = (compNames) => {
 
     const getOdds = () => {
         // console.log("test");
     }
+
+    // const displayNames = compNames.map((name, index) => {
+    //     return (
+    //         <option value={name}>{name}</option>
+    //     )
+    // })
 
     return (
         <div className="search-bar">
@@ -30,14 +36,14 @@ export const SearchBar = () => {
                 </div>
                        
                 {/* <!-- SELECT MARKET --> */}
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label htmlFor="selectMarket">Select Markts: </label>
                     <select id="selectMarket" className="form-control search-bar__custom-select">
                         <option>h2h</option>
                         <option>spreads</option>
                         <option>totals</option>
                     </select>
-                </div>
+                </div> */}
         
                 {/* <!-- BUTTONS --> */}
                 {/* <button id="sportsBtn" onClick="getSports()" className="btn">

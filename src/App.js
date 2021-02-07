@@ -21,12 +21,17 @@ function App() {
       response.json()
         .then((data) => {
           setOddsObject(data.data)
+          console.log(oddsObject);
         })
         .catch(err => console.log(err));
     }
     loadOdds()
     getOdds()
   }, [])
+
+  allCompNames.forEach(name => {
+    console.log(name);
+  })
 
   const getOdds = () => {
     fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
@@ -83,7 +88,6 @@ const highestHomeBookmaker = (events) => {
     homeArrayObject[site.site_key] = site.odds.h2h[0]
   })
   let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
-  console.log(highestHomeArrayObject);
 
   return highestHomeArrayObject
 }
@@ -137,16 +141,17 @@ const highestDrawOdds = (events) => {
   return drawArrayObject[highestDrawArrayObject]
 }
 
-// const displayEvents = oddsObject.map((event) => {
-
-//     // if(event.sites[0].odds.h2h.length === 0) {
-//     //   console.log("zero");
-//     // }
-// }
 
 
   const displayEvents = oddsObject.map((event) => {
-    if(event.sites[0].odds.h2h.length > 2) {
+  //   if(event.sites[0].odds.h2h.length === 0) {
+    //   return (
+    //     <>
+    //     </>
+    //   )
+  // }
+  //   else 
+  if(event.sites[0].odds.h2h.length > 2) {
         return (
         <>
           <tr>
@@ -212,11 +217,11 @@ const highestDrawOdds = (events) => {
 
 console.log(allCompNames);
 // console.log(compNames);
-console.log(oddsObject);
+console.log("display odds object: ", oddsObject);
   return (
     <div className="app">
       <header className="header">
-        <SearchBar />
+        <SearchBar compNames={compNames} />
       </header>
       <table>
         <thead>
@@ -229,7 +234,7 @@ console.log(oddsObject);
           </tr>
         </thead>
         <tbody>
-          {displayEvents}
+          {displayEvents} 
         </tbody>
       </table>
 
