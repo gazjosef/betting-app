@@ -21,7 +21,7 @@ function App() {
       response.json()
         .then((data) => {
           setOddsObject(data.data)
-          console.log(oddsObject);
+          console.table(oddsObject);
         })
         .catch(err => console.log(err));
     }
@@ -30,30 +30,51 @@ function App() {
   }, [])
 
   allCompNames.forEach(name => {
-    console.log(name);
+    // console.log(name);
   })
 
   const getOdds = () => {
+    console.log("this ran");
     fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
     .then((res) => res.json())
     .then((data) => {
+      console.log("data received");
+      console.table(data.data);
       displaySportOptions(data);
     });  
   }
 
   const displaySportOptions = (data) => {
+
     data.data.forEach((sport) => {
       setAllCompNames((oldArray) => [...oldArray, sport.group])
+      const sportNames = allCompNames.filter(getSportNames)
+      setCompNames((oldArray) => [...oldArray, sportNames])
       console.log(compNames);
-      allCompNames.forEach((name) => {
-        if(compNames.indexOf(name) === -1) {
-          // setCompNames((oldArray) => [...oldArray, name])
-          console.log("it did work");
-        } else {
-          console.log("did not work");
-        }
-      })
+      // allCompNames.forEach((name) => {
+      //   if(compNames.indexOf(name) === -1) {
+      //     setCompNames((oldArray) => [...oldArray, name])
+      //     console.log("it did work");
+      //   } else {
+      //     console.log("did not work");
+      //   }
+      // })
     })
+    // allCompNames.map((name) => {
+
+    //     if(compNames.indexOf(name) === -1) {
+    //       setCompNames((oldArray) => [...oldArray, name])  
+    //       console.log("it did work");
+    //     } else {
+    //       console.log("did not work");
+    //     }
+    // }
+    // )
+
+  }
+
+  const getSportNames = (value, index, self) => {
+    return self.indexOf(value) === index;
   }
 
   const timeConverter = (UNIX_timestamp) => {
@@ -131,6 +152,7 @@ const highestDrawBookmaker = (events) => {
 
   return highestDrawArrayObject
 }
+
 const highestDrawOdds = (events) => {
   let drawArrayObject = {}
   events.forEach(site => {
@@ -144,51 +166,44 @@ const highestDrawOdds = (events) => {
 
 
   const displayEvents = oddsObject.map((event) => {
-  //   if(event.sites[0].odds.h2h.length === 0) {
-    //   return (
-    //     <>
-    //     </>
-    //   )
-  // }
-  //   else 
-  if(event.sites[0].odds.h2h.length > 2) {
-        return (
-        <>
-          <tr>
-            <td rowSpan="3">{timeConverter(event.commence_time)}</td>
-            <td rowSpan="3">{event.sport_nice}</td>
-            <td>{event.teams[0]}</td>
-            <td>
-              <img className="img" src={require(`../src/img/bookmakers_side/${highestHomeBookmaker(event.sites)}.svg`).default} alt={highestHomeBookmaker(event.sites)}/>
-              {/* {highestHomeBookmaker(event.sites)} */}
-            </td>
-            <td>${highestHomeOdds(event.sites)}</td>
-          </tr>
-          <tr>
-            {/* <td style={{ display: "none"}}></td> */}
-            {/* <td style={{ display: "none"}}></td> */}
-            <td>{event.teams[1]}</td>
-            <td>
-              <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/>
-              {/* {highestAwayBookmaker(event.sites)} */}
-            </td>
-            <td>${highestAwayOdds(event.sites)}</td>
-          </tr>
-          <tr>
-            {/* <td style={{ display: "none"}}></td> */}
-            {/* <td style={{ display: "none"}}></td> */}
-            <td>Draw</td>
-            <td>
-              <img className="img" src={require(`../src/img/bookmakers_side/${highestDrawBookmaker(event.sites)}.svg`).default} alt={highestDrawBookmaker(event.sites)}/>
-              {/* {highestDrawBookmaker(event.sites)} */}
-            </td>
-            <td>${highestDrawOdds(event.sites)}</td>
-          </tr>
-        </>
+    if(event.sites[0].odds.h2h.length > 2) {
+          return (
+          <>
+            <tr>
+              <td rowSpan="3">{timeConverter(event.commence_time)}</td>
+              <td rowSpan="3">{event.sport_nice}</td>
+              <td>{event.teams[0]}</td>
+              <td>
+                <img className="img" src={require(`../src/img/bookmakers_side/${highestHomeBookmaker(event.sites)}.svg`).default} alt={highestHomeBookmaker(event.sites)}/>
+                {/* {highestHomeBookmaker(event.sites)} */}
+              </td>
+              <td>${highestHomeOdds(event.sites)}</td>
+            </tr>
+            <tr>
+              {/* <td style={{ display: "none"}}></td> */}
+              {/* <td style={{ display: "none"}}></td> */}
+              <td>{event.teams[1]}</td>
+              <td>
+                <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/>
+                {/* {highestAwayBookmaker(event.sites)} */}
+              </td>
+              <td>${highestAwayOdds(event.sites)}</td>
+            </tr>
+            <tr>
+              {/* <td style={{ display: "none"}}></td> */}
+              {/* <td style={{ display: "none"}}></td> */}
+              <td>Draw</td>
+              <td>
+                <img className="img" src={require(`../src/img/bookmakers_side/${highestDrawBookmaker(event.sites)}.svg`).default} alt={highestDrawBookmaker(event.sites)}/>
+                {/* {highestDrawBookmaker(event.sites)} */}
+              </td>
+              <td>${highestDrawOdds(event.sites)}</td>
+            </tr>
+          </>
 
-        )
-    } else {
-      return (
+          )
+      } else {
+        return (
             <>
             <tr>
               <td rowSpan="2">{timeConverter(event.commence_time)}</td>
@@ -215,9 +230,10 @@ const highestDrawOdds = (events) => {
     }
   })
 
-console.log(allCompNames);
-// console.log(compNames);
-console.log("display odds object: ", oddsObject);
+  console.log("display all comp names: ", allCompNames);
+  console.log("display comp names: ", compNames);
+  console.log("display odds object: ", oddsObject);
+
   return (
     <div className="app">
       <header className="header">
