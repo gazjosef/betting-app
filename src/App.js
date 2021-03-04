@@ -20,6 +20,7 @@ function App() {
       );
       response.json()
         .then((data) => {
+          console.log(data.data);
           setOddsObject(data.data)
           console.table(oddsObject);
         })
@@ -29,9 +30,9 @@ function App() {
     getOdds()
   }, [])
 
-  allCompNames.forEach(name => {
-    // console.log(name);
-  })
+  // allCompNames.forEach(name => {
+  //   // console.log(name);
+  // })
 
   const getOdds = () => {
     console.log("this ran");
@@ -45,37 +46,23 @@ function App() {
   }
 
   const displaySportOptions = (data) => {
-
+    const sportNames = []
     data.data.forEach((sport) => {
       setAllCompNames((oldArray) => [...oldArray, sport.group])
-      const sportNames = allCompNames.filter(getSportNames)
-      setCompNames((oldArray) => [...oldArray, sportNames])
-      console.log(compNames);
-      // allCompNames.forEach((name) => {
-      //   if(compNames.indexOf(name) === -1) {
-      //     setCompNames((oldArray) => [...oldArray, name])
-      //     console.log("it did work");
-      //   } else {
-      //     console.log("did not work");
-      //   }
-      // })
     })
-    // allCompNames.map((name) => {
 
-    //     if(compNames.indexOf(name) === -1) {
-    //       setCompNames((oldArray) => [...oldArray, name])  
-    //       console.log("it did work");
-    //     } else {
-    //       console.log("did not work");
-    //     }
-    // }
-    // )
-
+    allCompNames.forEach(name => {
+      if (sportNames.indexOf(name) === -1) {
+        sportNames.push(name);
+      }      
+    })
+    setCompNames(sportNames)
+    console.log(sportNames);
   }
 
-  const getSportNames = (value, index, self) => {
-    return self.indexOf(value) === index;
-  }
+  // const getSportNames = (value, index, self) => {
+  //   return self.indexOf(value) === index;
+  // }
 
   const timeConverter = (UNIX_timestamp) => {
     let a = new Date(UNIX_timestamp * 1000);

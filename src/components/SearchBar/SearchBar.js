@@ -1,16 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+
 
 export const SearchBar = (compNames) => {
-
-    const getOdds = () => {
-        // console.log("test");
-    }
-
-    // const displayNames = compNames.map((name, index) => {
-    //     return (
-    //         <option value={name}>{name}</option>
-    //     )
-    // })
 
     return (
         <div className="search-bar">
@@ -24,6 +15,7 @@ export const SearchBar = (compNames) => {
                     <label htmlFor="selectSport">Select Sport: </label>
                     <select id="selectSport" className="search-bar__custom-select">
                         <option value="upcoming">Upcoming</option>
+                        {/* {displayNames} */}
                     </select>
                 </div>
         
@@ -32,6 +24,9 @@ export const SearchBar = (compNames) => {
                     <label htmlFor="selectComp">Select Comp: </label>
                     <select id="selectComp" className="search-bar__custom-select">
                         <option value="upcoming">Upcoming</option>
+                        {/* {compNames.map((name) => {
+                            <option value={name}>{name}}</option>
+                        })} */}
                     </select>
                 </div>
                        
@@ -49,7 +44,9 @@ export const SearchBar = (compNames) => {
                 {/* <button id="sportsBtn" onClick="getSports()" className="btn">
                 Sports
                 </button> */}
-                <button id="oddsBtn" onClick={getOdds()} className="btn">
+                <button id="oddsBtn" 
+                // onClick={getOdds()} 
+                className="btn">
                     Odds
                 </button>
             </div>
