@@ -30,9 +30,6 @@ function App() {
     getOdds()
   }, [])
 
-  // allCompNames.forEach(name => {
-  //   // console.log(name);
-  // })
 
   const getOdds = () => {
     console.log("this ran");
@@ -219,7 +216,7 @@ const highestDrawOdds = (events) => {
 
   console.log("display all comp names: ", allCompNames);
   console.log("display comp names: ", compNames);
-  console.log("display odds object: ", oddsObject);
+  console.table("display odds object: ", oddsObject);
 
   return (
     <div className="app">
@@ -240,8 +237,6 @@ const highestDrawOdds = (events) => {
           {displayEvents} 
         </tbody>
       </table>
-
-      {/* <Output /> */}
     </div>
   );
 }
