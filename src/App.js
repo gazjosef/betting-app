@@ -20,7 +20,6 @@ function App() {
       );
       response.json()
         .then((data) => {
-          console.log(data.data);
           setOddsObject(data.data)
           console.table(oddsObject);
         })
@@ -44,18 +43,18 @@ function App() {
 
   const displaySportOptions = (data) => {
     const allCompNames = []
-    const compNames = []
+    const singleCompNames = []
 
     data.data.forEach((sport) => {
       allCompNames.push(sport.group)
     })
 
     allCompNames.forEach(name => {
-      if (compNames.indexOf(name) === -1) {
-        compNames.push(name);
+      if (singleCompNames.indexOf(name) === -1) {
+        singleCompNames.push(name);
       }      
     })
-    setCompNames(compNames)
+    setCompNames(singleCompNames)
     console.log("displaySportOptions: ", compNames);
   }
 
@@ -212,7 +211,6 @@ const highestDrawOdds = (events) => {
     }
   })
 
-  // console.log("display all comp names: ", allCompNames);
   console.log("display comp names: ", compNames);
   console.table("display odds object: ", oddsObject);
 

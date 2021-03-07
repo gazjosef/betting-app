@@ -1,7 +1,12 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 
 export const SearchBar = (compNames) => {
+    // const displayNames = compNames.map(name => {
+    //     return (
+    //         <option value={name}>{name}</option>
+    //     )
+    // })
 
     return (
         <div className="search-bar">
