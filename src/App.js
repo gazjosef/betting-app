@@ -6,7 +6,7 @@ import { SearchBar } from './components/SearchBar/SearchBar'
 
 function App() {
   const [ oddsObject, setOddsObject ] = useState([])
-  const [ allCompNames, setAllCompNames ] = useState([])
+  // const [ allCompNames, setAllCompNames ] = useState([])
   const [ compNames, setCompNames ] = useState([])
 
   const APIkey = '0964ad4e3be969508766aef582e92012';
@@ -43,23 +43,21 @@ function App() {
   }
 
   const displaySportOptions = (data) => {
-    const sportNames = []
+    const allCompNames = []
+    const compNames = []
+
     data.data.forEach((sport) => {
-      setAllCompNames((oldArray) => [...oldArray, sport.group])
+      allCompNames.push(sport.group)
     })
 
     allCompNames.forEach(name => {
-      if (sportNames.indexOf(name) === -1) {
-        sportNames.push(name);
+      if (compNames.indexOf(name) === -1) {
+        compNames.push(name);
       }      
     })
-    setCompNames(sportNames)
-    console.log(sportNames);
+    setCompNames(compNames)
+    console.log("displaySportOptions: ", compNames);
   }
-
-  // const getSportNames = (value, index, self) => {
-  //   return self.indexOf(value) === index;
-  // }
 
   const timeConverter = (UNIX_timestamp) => {
     let a = new Date(UNIX_timestamp * 1000);
@@ -214,7 +212,7 @@ const highestDrawOdds = (events) => {
     }
   })
 
-  console.log("display all comp names: ", allCompNames);
+  // console.log("display all comp names: ", allCompNames);
   console.log("display comp names: ", compNames);
   console.table("display odds object: ", oddsObject);
 
