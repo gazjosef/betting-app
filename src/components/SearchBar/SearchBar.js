@@ -2,11 +2,12 @@ import React from 'react';
 
 
 export const SearchBar = (compNames) => {
-    // const displayNames = compNames.map(name => {
-    //     return (
-    //         <option value={name}>{name}</option>
-    //     )
-    // })
+    console.log("SEARCHBAR: ",compNames);
+    const displayCompNames = compNames.compNames.map(name => {
+        return (
+            <option value={name}>{name}</option>
+        )
+    })
 
     return (
         <div className="search-bar">
@@ -20,7 +21,7 @@ export const SearchBar = (compNames) => {
                     <label htmlFor="selectSport">Select Sport: </label>
                     <select id="selectSport" className="search-bar__custom-select">
                         <option value="upcoming">Upcoming</option>
-                        {/* {displayNames} */}
+                        {displayCompNames}
                     </select>
                 </div>
         
