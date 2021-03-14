@@ -8,6 +8,7 @@ function App() {
   const [ oddsObject, setOddsObject ] = useState([])
   // const [ allCompNames, setAllCompNames ] = useState([])
   const [ compNames, setCompNames ] = useState([])
+  const [ selectedComp, setSelectedComp ] = useState()
 
   const APIkey = '0964ad4e3be969508766aef582e92012';
 
@@ -28,7 +29,6 @@ function App() {
     loadOdds()
     getOdds()
   }, [])
-
 
   const getOdds = () => {
     console.log("this ran");
@@ -82,69 +82,71 @@ function App() {
     // let sec = a.getSeconds();
     let time = day + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
     return time;
-}
+  }
 
-const highestHomeBookmaker = (events) => {
-  let homeArrayObject = {}
-  events.forEach(site => {
-    homeArrayObject[site.site_key] = site.odds.h2h[0]
-  })
-  let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
+  const highestHomeBookmaker = (events) => {
+    let homeArrayObject = {}
+    events.forEach(site => {
+      homeArrayObject[site.site_key] = site.odds.h2h[0]
+    })
+    let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
 
-  return highestHomeArrayObject
-}
+    return highestHomeArrayObject
+  }
 
-const highestHomeOdds = (events) => {
-  let homeArrayObject = {}
-  events.forEach(site => {
-    homeArrayObject[site.site_key] = site.odds.h2h[0]
-  })
-  let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
+  const highestHomeOdds = (events) => {
+    let homeArrayObject = {}
+    events.forEach(site => {
+      homeArrayObject[site.site_key] = site.odds.h2h[0]
+    })
+    let highestHomeArrayObject = Object.keys(homeArrayObject).reduce((acc, curr) => homeArrayObject[acc] > homeArrayObject[curr] ? acc : curr)
 
-  return homeArrayObject[highestHomeArrayObject]
-}
+    return homeArrayObject[highestHomeArrayObject]
+  }
 
-const highestAwayBookmaker = (events) => {
-  let awayArrayObject = {}
-  events.forEach(site => {
-    awayArrayObject[site.site_key] = site.odds.h2h[1]
-  })
-  let highestAwayArrayObject = Object.keys(awayArrayObject).reduce((acc, curr) => awayArrayObject[acc] > awayArrayObject[curr] ? acc : curr)
+  const highestAwayBookmaker = (events) => {
+    let awayArrayObject = {}
+    events.forEach(site => {
+      awayArrayObject[site.site_key] = site.odds.h2h[1]
+    })
+    let highestAwayArrayObject = Object.keys(awayArrayObject).reduce((acc, curr) => awayArrayObject[acc] > awayArrayObject[curr] ? acc : curr)
 
-  return highestAwayArrayObject
-}
+    return highestAwayArrayObject
+  }
 
-const highestAwayOdds = (events) => {
-  let awayArrayObject = {}
-  events.forEach(site => {
-    awayArrayObject[site.site_key] = site.odds.h2h[1]
-  })
-  let highestAwayArrayObject = Object.keys(awayArrayObject).reduce((acc, curr) => awayArrayObject[acc] > awayArrayObject[curr] ? acc : curr)
+  const highestAwayOdds = (events) => {
+    let awayArrayObject = {}
+    events.forEach(site => {
+      awayArrayObject[site.site_key] = site.odds.h2h[1]
+    })
+    let highestAwayArrayObject = Object.keys(awayArrayObject).reduce((acc, curr) => awayArrayObject[acc] > awayArrayObject[curr] ? acc : curr)
 
-  return awayArrayObject[highestAwayArrayObject]
-}
+    return awayArrayObject[highestAwayArrayObject]
+  }
 
-const highestDrawBookmaker = (events) => {
-  let drawArrayObject = {}
-  events.forEach(site => {
-    drawArrayObject[site.site_key] = site.odds.h2h[2]
-  })
-  let highestDrawArrayObject = Object.keys(drawArrayObject).reduce((acc, curr) => drawArrayObject[acc] > drawArrayObject[curr] ? acc : curr)
+  const highestDrawBookmaker = (events) => {
+    let drawArrayObject = {}
+    events.forEach(site => {
+      drawArrayObject[site.site_key] = site.odds.h2h[2]
+    })
+    let highestDrawArrayObject = Object.keys(drawArrayObject).reduce((acc, curr) => drawArrayObject[acc] > drawArrayObject[curr] ? acc : curr)
 
-  return highestDrawArrayObject
-}
+    return highestDrawArrayObject
+  }
 
-const highestDrawOdds = (events) => {
-  let drawArrayObject = {}
-  events.forEach(site => {
-    drawArrayObject[site.site_key] = site.odds.h2h[2]
-  })
-  let highestDrawArrayObject = Object.keys(drawArrayObject).reduce((acc, curr) => drawArrayObject[acc] > drawArrayObject[curr] ? acc : curr)
+  const highestDrawOdds = (events) => {
+    let drawArrayObject = {}
+    events.forEach(site => {
+      drawArrayObject[site.site_key] = site.odds.h2h[2]
+    })
+    let highestDrawArrayObject = Object.keys(drawArrayObject).reduce((acc, curr) => drawArrayObject[acc] > drawArrayObject[curr] ? acc : curr)
 
-  return drawArrayObject[highestDrawArrayObject]
-}
+    return drawArrayObject[highestDrawArrayObject]
+  }
 
-
+  const updatedSelectedComp = () => {
+    
+  }
 
   const displayEvents = oddsObject.map((event) => {
     if(event.sites[0].odds.h2h.length > 2) {
