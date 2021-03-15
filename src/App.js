@@ -144,8 +144,8 @@ function App() {
     return drawArrayObject[highestDrawArrayObject]
   }
 
-  const updatedSelectedComp = () => {
-    
+  const updatedSelectedComp = (comp) => {
+    setSelectedComp(comp)
   }
 
   const displayEvents = oddsObject.map((event) => {
@@ -219,7 +219,7 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-        <SearchBar compNames={compNames} />
+        <SearchBar compNames={compNames} updatedSelectedComp={updatedSelectedComp}/>
       </header>
       <table>
         <thead>
