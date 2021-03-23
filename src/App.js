@@ -57,6 +57,7 @@ function App() {
     console.log("displaySportOptions: ", compNames);
   }
 
+  // Time Converter
   const timeConverter = (UNIX_timestamp) => {
     let a = new Date(UNIX_timestamp * 1000);
     const months = [
@@ -83,6 +84,7 @@ function App() {
     return time;
   }
 
+  // Highest Odds
   const highestHomeBookmaker = (events) => {
     let homeArrayObject = {}
     events.forEach(site => {
