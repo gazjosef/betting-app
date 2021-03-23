@@ -6,7 +6,6 @@ import { SearchBar } from './components/SearchBar/SearchBar'
 
 function App() {
   const [ oddsObject, setOddsObject ] = useState([])
-  // const [ allCompNames, setAllCompNames ] = useState([])
   const [ compNames, setCompNames ] = useState([])
   const [ selectedComp, setSelectedComp ] = useState()
 
