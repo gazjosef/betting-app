@@ -1,8 +1,9 @@
 import React from 'react';
 
 
-export const SearchBar = (compNames) => {
+export const SearchBar = (compNames, updatedSelectedComp) => {
     console.log("SEARCHBAR: ",compNames);
+        // console.log("Select Sport ID: ", selectSport);
     const displayCompNames = compNames.compNames.map(name => {
         return (
             <option value={name}>{name}</option>
@@ -19,7 +20,7 @@ export const SearchBar = (compNames) => {
                 {/* <!-- SELECT SPORT --> */}
                 <div className="form-group">
                     <label htmlFor="selectSport">Select Sport: </label>
-                    <select id="selectSport" className="search-bar__custom-select">
+                    <select id="selectSport" className="search-bar__custom-select" onSelect={updatedSelectedComp}>
                         <option value="upcoming">Upcoming</option>
                         {displayCompNames}
                     </select>

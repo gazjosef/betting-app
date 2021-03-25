@@ -145,8 +145,8 @@ function App() {
     return drawArrayObject[highestDrawArrayObject]
   }
 
-  const updatedSelectedComp = (comp) => {
-    setSelectedComp(comp)
+  const updatedSelectedComp = () => {
+    console.log("You selected something");
   }
 
   const displayEvents = oddsObject.map((event) => {
