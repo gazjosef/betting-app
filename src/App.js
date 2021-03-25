@@ -30,12 +30,9 @@ function App() {
   }, [])
 
   const getOdds = () => {
-    console.log("this ran");
     fetch(`https://api.the-odds-api.com/v3/sports?apiKey=${APIkey}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log("data received");
-      console.table(data.data);
       displaySportOptions(data);
     });  
   }
@@ -214,7 +211,6 @@ function App() {
     }
   })
 
-  console.log("display comp names: ", compNames);
   console.table("display odds object: ", oddsObject);
 
   return (
