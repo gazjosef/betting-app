@@ -7,7 +7,7 @@ import { SearchBar } from './components/SearchBar/SearchBar'
 function App() {
   const [ oddsObject, setOddsObject ] = useState([])
   const [ compNames, setCompNames ] = useState([])
-  const [ selectedComp, setSelectedComp ] = useState()
+  // const [ selectedComp, setSelectedComp ] = useState()
 
   const APIkey = '0964ad4e3be969508766aef582e92012';
 
@@ -21,7 +21,6 @@ function App() {
       response.json()
         .then((data) => {
           setOddsObject(data.data)
-          console.table(oddsObject);
         })
         .catch(err => console.log(err));
     }
@@ -51,7 +50,6 @@ function App() {
       }      
     })
     setCompNames(singleCompNames)
-    console.log("displaySportOptions: ", compNames);
   }
 
   // Time Converter
@@ -142,11 +140,12 @@ function App() {
     return drawArrayObject[highestDrawArrayObject]
   }
 
-  const updatedSelectedComp = () => {
-    console.log("You selected something");
-  }
+  // const updatedSelectedComp = () => {
+  //   console.log("You selected something");
+  // }
+  // console.table(oddsObject);
 
-  const displayEvents = oddsObject.map((event) => {
+  const displayEvents = oddsObject.map((event, index) => {
     if(event.sites[0].odds.h2h.length > 2) {
           return (
           <>
@@ -185,7 +184,7 @@ function App() {
           )
       } else {
         return (
-            <>
+          <>
             <tr>
               <td rowSpan="2">{timeConverter(event.commence_time)}</td>
               <td rowSpan="2">{event.sport_nice}</td>
@@ -211,12 +210,12 @@ function App() {
     }
   })
 
-  console.table("display odds object: ", oddsObject);
+  console.table("Display Odds Object: ", oddsObject);
 
   return (
     <div className="app">
       <header className="header">
-        <SearchBar compNames={compNames} updatedSelectedComp={updatedSelectedComp}/>
+        <SearchBar compNames={compNames} />
       </header>
       <table>
         <thead>

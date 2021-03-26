@@ -1,14 +1,16 @@
 import React from 'react';
 
 
-export const SearchBar = (compNames, updatedSelectedComp) => {
-    console.log("SEARCHBAR: ",compNames);
-        // console.log("Select Sport ID: ", selectSport);
+export const SearchBar = (compNames) => {
     const displayCompNames = compNames.compNames.map(name => {
         return (
-            <option value={name}>{name}</option>
+            <option key={name} value={name}>{name}</option>
         )
     })
+
+    const updatedSelectedComp = () => {
+        console.log("Selected Something");
+    }
 
     return (
         <div className="search-bar">
@@ -20,7 +22,7 @@ export const SearchBar = (compNames, updatedSelectedComp) => {
                 {/* <!-- SELECT SPORT --> */}
                 <div className="form-group">
                     <label htmlFor="selectSport">Select Sport: </label>
-                    <select id="selectSport" className="search-bar__custom-select" onSelect={updatedSelectedComp}>
+                    <select id="selectSport" className="search-bar__custom-select" onChange={updatedSelectedComp}>
                         <option value="upcoming">Upcoming</option>
                         {displayCompNames}
                     </select>
@@ -36,16 +38,6 @@ export const SearchBar = (compNames, updatedSelectedComp) => {
                         })} */}
                     </select>
                 </div>
-                       
-                {/* <!-- SELECT MARKET --> */}
-                {/* <div className="form-group">
-                    <label htmlFor="selectMarket">Select Markts: </label>
-                    <select id="selectMarket" className="form-control search-bar__custom-select">
-                        <option>h2h</option>
-                        <option>spreads</option>
-                        <option>totals</option>
-                    </select>
-                </div> */}
         
                 {/* <!-- BUTTONS --> */}
                 {/* <button id="sportsBtn" onClick="getSports()" className="btn">
