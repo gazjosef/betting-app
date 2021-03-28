@@ -11,7 +11,6 @@ function App() {
 
   const APIkey = '0964ad4e3be969508766aef582e92012';
 
-  // let markets = [ "h2h", "spreads", "totals" ]
 
   useEffect( () => {
     async function loadOdds() {
@@ -50,33 +49,6 @@ function App() {
       }      
     })
     setCompNames(singleCompNames)
-  }
-
-  // Time Converter
-  const timeConverter = (UNIX_timestamp) => {
-    let a = new Date(UNIX_timestamp * 1000);
-    const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-    let year = a.getFullYear();
-    let month = months[a.getMonth()];
-    let day = a.getDate();
-    let hour = a.getHours();
-    let min = ("0" + a.getMinutes()).slice(-2);
-    // let sec = a.getSeconds();
-    let time = day + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
-    return time;
   }
 
   // Highest Odds
@@ -138,6 +110,33 @@ function App() {
     let highestDrawArrayObject = Object.keys(drawArrayObject).reduce((acc, curr) => drawArrayObject[acc] > drawArrayObject[curr] ? acc : curr)
 
     return drawArrayObject[highestDrawArrayObject]
+  }
+
+  // Time Converter
+  const timeConverter = (UNIX_timestamp) => {
+    let a = new Date(UNIX_timestamp * 1000);
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
+    let year = a.getFullYear();
+    let month = months[a.getMonth()];
+    let day = a.getDate();
+    let hour = a.getHours();
+    let min = ("0" + a.getMinutes()).slice(-2);
+    // let sec = a.getSeconds();
+    let time = day + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+    return time;
   }
 
   const displayEvents = oddsObject.map((event, index) => {
