@@ -8,8 +8,9 @@ export const SearchBar = (compNames) => {
         )
     })
 
-    const updatedSelectedComp = () => {
-        console.log("Selected Something");
+    const updatedSelectedComp = (e) => {
+        // console.log("Selected Something");
+        console.log(e.target.value);
     }
 
     return (

@@ -140,11 +140,6 @@ function App() {
     return drawArrayObject[highestDrawArrayObject]
   }
 
-  // const updatedSelectedComp = () => {
-  //   console.log("You selected something");
-  // }
-  // console.table(oddsObject);
-
   const displayEvents = oddsObject.map((event, index) => {
     if(event.sites[0].odds.h2h.length > 2) {
           return (
@@ -160,8 +155,6 @@ function App() {
               <td>${highestHomeOdds(event.sites)}</td>
             </tr>
             <tr>
-              {/* <td style={{ display: "none"}}></td> */}
-              {/* <td style={{ display: "none"}}></td> */}
               <td>{event.teams[1]}</td>
               <td>
                 <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/>
@@ -170,8 +163,6 @@ function App() {
               <td>${highestAwayOdds(event.sites)}</td>
             </tr>
             <tr>
-              {/* <td style={{ display: "none"}}></td> */}
-              {/* <td style={{ display: "none"}}></td> */}
               <td>Draw</td>
               <td>
                 <img className="img" src={require(`../src/img/bookmakers_side/${highestDrawBookmaker(event.sites)}.svg`).default} alt={highestDrawBookmaker(event.sites)}/>
@@ -196,8 +187,6 @@ function App() {
               <td>${highestHomeOdds(event.sites)}</td>
             </tr>
             <tr>
-              {/* <td style={{ display: "none"}}></td> */}
-              {/* <td style={{ display: "none"}}></td> */}
               <td>{event.teams[1]}</td>
               <td>
                 <img className="img" src={require(`../src/img/bookmakers_side/${highestAwayBookmaker(event.sites)}.svg`).default} alt={highestAwayBookmaker(event.sites)}/>
